@@ -1,0 +1,41 @@
+<div class="container my-container">
+  <ngb-tabset>
+    <!-- Tabs lists -->
+    <ngb-tab *ngFor="let list of lists" title="{{list.name}}">
+      <ng-template ngbTabContent>
+        <ul class="list-group my-margin-top">
+          <li class="list-group-item active">A faire</li>
+          <li class="list-group-item" *ngFor="let item of filterItems(false)">
+            <my-generic-item [item]="item"></my-generic-item>
+          </li>
+        </ul>
+        <ul class="list-group my-margin-top">
+          <li class="list-group-item active">Faits</li>
+          <li class="list-group-item" *ngFor="let item of filterItems(true)">
+            <my-generic-item [item]="item"></my-generic-item>
+          </li>
+        </ul>
+      </ng-template>
+    </ngb-tab>
+
+    <!-- Tab add -->
+    <ngb-tab>
+      <ng-template ngbTabTitle>
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </ng-template>
+      <ng-template ngbTabContent>
+        <br/>
+        <h4 class="my-margin-top">Créer une liste</h4>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="fa fa-list" aria-hidden="true"></i>
+            </div>
+            <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="name">
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="validate()">Valider</button>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>

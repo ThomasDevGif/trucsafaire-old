@@ -1,0 +1,11 @@
+<div class="d-flex w-100 justify-content-between">
+  <h5 class="mb-1">{{item.name}}</h5>
+  <small>3 days ago</small>
+</div>
+<div class="my-footer-item my-margin-top">
+  <button type="button" class="btn btn-success" *ngIf="!item.done" (click)="action()">Fait !</button>
+  <button type="button" class="btn btn-info" *ngIf="item.done" (click)="action()">A faire</button>
+  <button type="button" class="btn btn-warning">
+    <i class="fa fa-trash" aria-hidden="true"></i>
+  </button>
+</div>
