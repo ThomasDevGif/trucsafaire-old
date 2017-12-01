@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
-import { List } from '../models/list';
-import { Item } from '../models/item';
+import { List } from '../../models/list';
+import { Item } from '../../models/item';
 
 @Component({
-  selector: 'app-course',
-  templateUrl: './course.component.html',
-  styleUrls: ['./course.component.css']
+  selector: 'my-generic-list',
+  templateUrl: './my-generic-list.component.html',
+  styleUrls: ['./my-generic-list.component.css']
 })
-export class CourseComponent implements OnInit {
+export class MyGenericListComponent implements OnInit {
 
-  title = "Card title";
-  date = "dd/mm/yyyy";
   closeResult: string;
 
   // Form
