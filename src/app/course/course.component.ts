@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { List } from '../models/list';
 import { Item } from '../models/item';
@@ -12,6 +13,7 @@ export class CourseComponent implements OnInit {
 
   title = "Card title";
   date = "dd/mm/yyyy";
+  closeResult: string;
 
   // Form
   name: string = '';
@@ -33,18 +35,24 @@ export class CourseComponent implements OnInit {
     {
       id: 1,
       name: 'Tache 1',
-      done: false
+      done: false,
+      date: '30/11/2017'
     },
     {
       id: 2,
       name: 'Tache 2',
-      done: false
+      done: false,
+      date: '30/11/2017'
     }
   ]
 
-  constructor() { }
+  constructor(private modalService: NgbModal) {}
 
   ngOnInit() {
+  }
+
+  open(content) {
+    this.modalService.open(content);
   }
 
   validate() : void {

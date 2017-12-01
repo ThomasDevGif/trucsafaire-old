@@ -1,6 +1,6 @@
 <div class="d-flex w-100 justify-content-between">
   <h5 class="mb-1">{{item.name}}</h5>
-  <small>3 days ago</small>
+  <small>{{item.date}}</small>
 </div>
 <div class="my-footer-item my-margin-top">
   <button type="button" class="btn btn-success" *ngIf="!item.done" (click)="action()">Fait !</button>

@@ -7,8 +7,7 @@ import { FormsModule }   from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { CourseComponent } from './course/course.component';
-import { HomeComponent } from './home/home.component';
-import { MyGenericItemComponent } from './my-generic-item/my-generic-item.component';
+import { MyGenericItemComponent } from './components/my-generic-item/my-generic-item.component';
 
 import { RestService } from './services/rest.service';
 
@@ -16,7 +15,6 @@ import { RestService } from './services/rest.service';
   declarations: [
     AppComponent,
     CourseComponent,
-    HomeComponent,
     MyGenericItemComponent
   ],
   imports: [
