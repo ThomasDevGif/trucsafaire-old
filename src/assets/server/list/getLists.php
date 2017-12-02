@@ -2,12 +2,12 @@
 // get database connection
 include_once '../config/database.php';
 
-// Display types
-function getTypes() {
+// Display lists
+function getLists() {
   $database = new Database();
   $db = $database->getConnection();
 
-  $statement=$db->prepare("SELECT * FROM type ORDER BY id");
+  $statement=$db->prepare("SELECT * FROM list ORDER BY id");
   $statement->execute();
   $results=$statement->fetchAll(PDO::FETCH_ASSOC);
   $json=json_encode($results);
@@ -15,6 +15,6 @@ function getTypes() {
 }
 
 // Execute
-getTypes();
+getLists();
 
 ?>

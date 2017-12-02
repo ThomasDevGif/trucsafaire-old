@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { I18n, CustomDatepickerI18n } from '../../injectables/custom-date-picker-i18n';
 import { List } from '../../models/list';
 import { Item } from '../../models/item';
+import { RestService } from '../../services/rest.service';
 
 @Component({
   selector: 'my-generic-list',
@@ -16,24 +17,12 @@ import { Item } from '../../models/item';
 })
 export class MyGenericListComponent implements OnInit {
 
-  closeResult: string;
-
   // Form
   name: string = '';
   inputDate;
 
-  lists: List[] = [
-    {
-      id: 1,
-      name: 'Auchan',
-      idType: 1
-    },
-    {
-      id: 2,
-      name: 'Picard',
-      idType: 1
-    }
-  ]
+  // Data
+  lists: List[];
 
   items: Item[] = [
     {
@@ -50,7 +39,11 @@ export class MyGenericListComponent implements OnInit {
     }
   ]
 
-  constructor(private modalService: NgbModal, config: NgbDatepickerConfig) {
+  constructor (
+    private modalService: NgbModal,
+    config: NgbDatepickerConfig,
+    private restService: RestService
+  ) {
     let today = new Date();
     this.inputDate = {
       year: today.getFullYear(),
@@ -61,7 +54,14 @@ export class MyGenericListComponent implements OnInit {
   }
 
   ngOnInit() {
+    let list = new List();
+    list.id = 1;
+    list.name = 'test';
+    list.idType = 2;
+    // console.log(list);
+    // this.restService.createList(list);
 
+    this.restService.getLists().then(res => this.lists = res);
   }
 
   open(content) {

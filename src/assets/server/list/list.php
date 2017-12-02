@@ -26,9 +26,9 @@ class List {
 		$stmt->bindParam(":idType", $this->idType);
 
 		// Insertion
-		if($stmt->execute()){
+		if ($stmt->execute()) {
 			return true;
-		}else{
+		 } else {
 			echo "<pre>";
 			print_r($stmt->errorInfo());
 			echo "</pre>";

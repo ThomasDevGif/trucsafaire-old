@@ -1,4 +1,4 @@
-<ngb-tabset *ngIf="lists.length > 0">
+<ngb-tabset *ngIf="lists">
   <!-- Tabs lists -->
   <ngb-tab *ngFor="let list of lists" title="{{list.name}}">
     <ng-template ngbTabContent>
@@ -73,6 +73,6 @@
 </ng-template>
 
 <!-- If no lists -->
-<div *ngIf="lists.length == 0">
+<div *ngIf="!lists">
   <my-generic-list-create></my-generic-list-create>
 </div>
