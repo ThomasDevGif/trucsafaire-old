@@ -1,5 +1,4 @@
-
-<ngb-tabset>
+<ngb-tabset *ngIf="lists.length > 0">
   <!-- Tabs lists -->
   <ngb-tab *ngFor="let list of lists" title="{{list.name}}">
     <ng-template ngbTabContent>
@@ -40,32 +39,40 @@
     </ng-template>
     <ng-template ngbTabContent>
       <br/>
-      <h4 class="my-margin-top">Créer une liste</h4>
-      <div class="form-group">
-        <div class="input-group">
-          <div class="input-group-addon">
-            <i class="fa fa-list" aria-hidden="true"></i>
-          </div>
-          <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="name">
-        </div>
-      </div>
-      <button type="button" class="btn btn-primary" (click)="validate()">Valider</button>
+      <my-generic-list-create></my-generic-list-create>
     </ng-template>
   </ngb-tab>
 </ngb-tabset>
 
 <!-- Modal -->
-<ng-template #content let-c="close" let-d="dismiss">
+<ng-template #content let-c="close">
   <div class="modal-header">
-    <h4 class="modal-title">Modal title</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+    <h4 class="modal-title">Ajouter un item</h4>
+    <button type="button" class="close" aria-label="Close" (click)="c('Close click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <p>One fine body&hellip;</p>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Nom">
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <input class="form-control" placeholder="dd/mm/yyyy" name="dp" [minDate]="minDate"
+        [(ngModel)]="inputDate" ngbDatepicker #d="ngbDatepicker">
+        <button class="input-group-addon" (click)="d.toggle()" type="button">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+    <button type="button" class="btn btn-success" (click)="createItem()">Valider</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Fermer</button>
   </div>
 </ng-template>
+
+<!-- If no lists -->
+<div *ngIf="lists.length == 0">
+  <my-generic-list-create></my-generic-list-create>
+</div>

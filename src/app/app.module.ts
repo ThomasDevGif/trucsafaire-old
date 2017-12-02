@@ -4,20 +4,24 @@ import { AppRoutingModule }   from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule }    from '@angular/http';
 import { FormsModule }   from '@angular/forms'
+import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+
+import { RestService } from './services/rest.service';
+import { NgbDateMomentParserFormatter } from './injectables/custom-date-formatter';
 
 import { AppComponent } from './app.component';
 import { CourseComponent } from './components/course/course.component';
 import { MyGenericItemComponent } from './components/my-generic-item/my-generic-item.component';
-
-import { RestService } from './services/rest.service';
 import { MyGenericListComponent } from './components/my-generic-list/my-generic-list.component';
+import { MyGenericListCreateComponent } from './components/my-generic-list-create/my-generic-list-create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CourseComponent,
     MyGenericItemComponent,
-    MyGenericListComponent
+    MyGenericListComponent,
+    MyGenericListCreateComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -26,7 +30,13 @@ import { MyGenericListComponent } from './components/my-generic-list/my-generic-
     HttpModule,
     FormsModule
   ],
-  providers: [RestService],
+  providers: [
+    RestService,
+    {
+      provide: NgbDateParserFormatter,
+      useFactory: () => { return new NgbDateMomentParserFormatter("DD/MM/YYYY") }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

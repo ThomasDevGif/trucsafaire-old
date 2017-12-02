@@ -7,7 +7,7 @@ import { CourseComponent } from  './components/course/course.component';
 
 const routes: Routes = [
   {
-    path: 'course',
+    path: '',
     component: CourseComponent
   }
 ];

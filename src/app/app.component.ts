@@ -10,7 +10,7 @@ import { RestService } from './services/rest.service';
 export class AppComponent implements OnInit {
   title = 'Trucs A Faire';
   items = [
-    { name: 'Course', link: '/course' }
+    { name: 'Courses', link: '/' }
   ]
 
   constructor (
