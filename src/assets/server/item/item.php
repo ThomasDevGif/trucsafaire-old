@@ -7,6 +7,7 @@ class Item {
 	public $name;
 	public $date;
 	public $done;
+	public $listId;
 
 	public function __construct($db) {
 		$this->conn = $db;
