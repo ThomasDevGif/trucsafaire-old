@@ -16,12 +16,12 @@ $list->name = $data->name;
 $list->idType = $data->idType;
 
 // create the list
-if($list->create()){
+if ($list->create()) {
     echo "List was created.";
 }
 
 // if unable to create the list, tell the list
-else{
+else {
     echo "Unable to create list.";
 }
 ?>

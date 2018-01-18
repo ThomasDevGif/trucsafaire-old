@@ -54,13 +54,6 @@ export class MyGenericListComponent implements OnInit {
   }
 
   ngOnInit() {
-    let list = new List();
-    list.id = 1;
-    list.name = 'test';
-    list.idType = 2;
-    // console.log(list);
-    // this.restService.createList(list);
-
     this.restService.getLists().then(res => this.lists = res);
   }
 
