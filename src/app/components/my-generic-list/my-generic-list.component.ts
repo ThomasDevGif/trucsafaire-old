@@ -42,6 +42,12 @@ export class MyGenericListComponent implements OnInit {
       name: 'Tache 2',
       done: false,
       date: '30/11/2017'
+    },
+    {
+      id: 3,
+      name: 'Tache 3',
+      done: false,
+      date: '30/11/2017'
     }
   ]
 
@@ -85,6 +91,12 @@ export class MyGenericListComponent implements OnInit {
 
   createItem() {
     console.log(this.inputDate);
+  }
+
+  selectAll(select : boolean) {
+    for (let item of this.items) {
+      item.done = select;
+    }
   }
 
 }

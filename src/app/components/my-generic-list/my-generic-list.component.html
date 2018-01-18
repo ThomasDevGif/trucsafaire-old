@@ -2,13 +2,13 @@
   <!-- Tabs lists -->
   <ngb-tab *ngFor="let list of lists" title="{{list.name}}">
     <ng-template ngbTabContent>
-      <!-- Big admin layout -->
-      <div class="hidden-sm-down my-card-admin my-margin-top">
+      <!-- Admin layout -->
+      <div class="my-card-admin my-margin-top">
         <div>
-          <button type="button" class="btn btn-info">
+          <button type="button" class="btn btn-info" (click)="selectAll(true)">
             <i class="fa fa-check-square" aria-hidden="true"></i>
           </button>
-          <button type="button" class="btn btn-info">
+          <button type="button" class="btn btn-info" (click)="selectAll(false)">
             <i class="fa fa-window-close" aria-hidden="true"></i>
           </button>
         </div>
@@ -20,15 +20,6 @@
             <i class="fa fa-trash" aria-hidden="true"></i>
           </button>
         </div>
-      </div>
-      <!-- Small admin layout -->
-      <div class="hidden-md-up my-card-admin my-margin-top">
-        <button type="button" class="btn btn-primary">
-          <i class="fa fa-plus" aria-hidden="true" (click)="open(content)"></i>
-        </button>
-        <button type="button" class="btn btn-warning">
-          <i class="fa fa-trash" aria-hidden="true"></i>
-        </button>
       </div>
       <!-- List -->
       <ul class="list-group my-margin-top">
