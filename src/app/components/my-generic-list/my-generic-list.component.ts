@@ -22,7 +22,13 @@ export class MyGenericListComponent implements OnInit {
   inputDate;
 
   // Data
-  lists: List[];
+  lists: List[] = [
+    {
+      id: 1,
+      name: 'Liste',
+      idType: 1
+    }
+  ];
 
   items: Item[] = [
     {

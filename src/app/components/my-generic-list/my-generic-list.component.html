@@ -4,8 +4,22 @@
     <ng-template ngbTabContent>
       <!-- Big admin layout -->
       <div class="hidden-sm-down my-card-admin my-margin-top">
-        <button type="button" class="btn btn-primary" (click)="open(content)">Ajouter un item</button>
-        <button type="button" class="btn btn-warning">Supprimer</button>
+        <div>
+          <button type="button" class="btn btn-info">
+            <i class="fa fa-check-square" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn btn-info">
+            <i class="fa fa-window-close" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div>
+          <button type="button" class="btn btn-primary" (click)="open(content)">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn btn-warning">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </div>
       </div>
       <!-- Small admin layout -->
       <div class="hidden-md-up my-card-admin my-margin-top">
@@ -19,14 +33,14 @@
       <!-- List -->
       <ul class="list-group my-margin-top">
         <li class="list-group-item active">A faire ({{filterItems(false).length}})</li>
-        <li class="list-group-item" *ngFor="let item of filterItems(false)">
-          <my-generic-item [item]="item"></my-generic-item>
+        <li class="list-group-item">
+          <my-generic-item *ngFor="let item of filterItems(false)" [item]="item"></my-generic-item>
         </li>
       </ul>
       <ul class="list-group my-margin-top">
         <li class="list-group-item active">Faits ({{filterItems(true).length}})</li>
-        <li class="list-group-item" *ngFor="let item of filterItems(true)">
-          <my-generic-item [item]="item"></my-generic-item>
+        <li class="list-group-item">
+          <my-generic-item *ngFor="let item of filterItems(true)" [item]="item"></my-generic-item>
         </li>
       </ul>
     </ng-template>
