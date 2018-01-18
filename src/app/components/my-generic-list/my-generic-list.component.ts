@@ -66,7 +66,7 @@ export class MyGenericListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.restService.getLists().then(res => this.lists = res);
+    //this.restService.getLists().then(res => this.lists = res);
   }
 
   open(content) {
@@ -106,4 +106,5 @@ export class MyGenericListComponent implements OnInit {
        this.items.splice(index, 1);
     }
   }
+
 }
