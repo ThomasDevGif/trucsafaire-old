@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpModule }    from '@angular/http';
 import { FormsModule }   from '@angular/forms'
 import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { DndModule } from 'ng2-dnd';
 
 import { RestService } from './services/rest.service';
 import { NgbDateMomentParserFormatter } from './injectables/custom-date-formatter';
@@ -28,7 +29,8 @@ import { MyGenericListCreateComponent } from './components/my-generic-list-creat
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    DndModule.forRoot()
   ],
   providers: [
     RestService,

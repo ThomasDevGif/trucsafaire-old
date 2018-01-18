@@ -99,4 +99,11 @@ export class MyGenericListComponent implements OnInit {
     }
   }
 
+  deleteItem($event : any) {
+    var item = $event.dragData;
+    var index = this.items.indexOf(item, 0);
+    if (index > -1) {
+       this.items.splice(index, 1);
+    }
+  }
 }
