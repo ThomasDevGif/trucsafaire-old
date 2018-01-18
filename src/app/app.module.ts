@@ -15,6 +15,7 @@ import { CourseComponent } from './components/course/course.component';
 import { MyGenericItemComponent } from './components/my-generic-item/my-generic-item.component';
 import { MyGenericListComponent } from './components/my-generic-list/my-generic-list.component';
 import { MyGenericListCreateComponent } from './components/my-generic-list-create/my-generic-list-create.component';
+import { AutofocusDirective } from './directives/autofocus.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MyGenericListCreateComponent } from './components/my-generic-list-creat
     CourseComponent,
     MyGenericItemComponent,
     MyGenericListComponent,
-    MyGenericListCreateComponent
+    MyGenericListCreateComponent,
+    AutofocusDirective
   ],
   imports: [
     NgbModule.forRoot(),

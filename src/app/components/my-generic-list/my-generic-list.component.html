@@ -13,8 +13,10 @@
           </button>
         </div>
         <div>
-          <button type="button" class="btn btn-primary" (click)="open(content)">
-            <i class="fa fa-plus" aria-hidden="true"></i>
+          <!-- <button type="button" class="btn btn-primary" (click)="open(content)"> -->
+          <button type="button" class="btn btn-primary" (click)="addNewItem()">
+            <i *ngIf="!modeAddItem" class="fa fa-plus" aria-hidden="true"></i>
+            <i *ngIf="modeAddItem" class="fa fa-times" aria-hidden="true"></i>
           </button>
           <button dnd-droppable (onDropSuccess)="deleteItem($event)" type="button" class="btn btn-warning"oninvalid="">
             <i class="fa fa-trash" aria-hidden="true"></i>
@@ -28,6 +30,7 @@
           <div *ngFor="let item of filterItems(false); let i = index" dnd-draggable [dragEnabled]="true" [dragData]="item" dnd-sortable [sortableIndex]="i">
             <my-generic-item [item]="item"></my-generic-item>
           </div>
+          <input style="margin-top: 20px;" myAutofocus *ngIf="modeAddItem" type="text" class="form-control" placeholder="Item" (keydown)="handleKeyDown($event)" [(ngModel)]="inputNewItemName">
         </li>
       </ul>
       <ul class="list-group my-margin-top">
