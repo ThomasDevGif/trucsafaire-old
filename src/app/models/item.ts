@@ -3,4 +3,5 @@ export class Item {
   name: string;
   done: boolean;
   date: string;
+  listId: number;
 }

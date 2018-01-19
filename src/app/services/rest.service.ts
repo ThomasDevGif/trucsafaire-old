@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { Type } from '../models/type';
+import { Item } from '../models/item';
 import { List } from '../models/list';
 
 @Injectable()
@@ -11,14 +11,6 @@ export class RestService {
   private baseUrl = './assets/server/';
 
   constructor(private http: Http) { }
-
-  // TYPE
-  getTypes() {
-    this.http.get(this.baseUrl + 'type/getTypes.php')
-    .toPromise()
-    .then(res => console.log(res))
-    .catch(this.handleError);
-  }
 
   // LIST
   createList(list: List) {

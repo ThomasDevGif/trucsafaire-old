@@ -5,7 +5,7 @@ class List {
 
 	public $id;
 	public $name;
-	public $idType;
+	public $type;
 
 	public function __construct($db){
 		$this->conn = $db;
@@ -16,16 +16,16 @@ class List {
 		$stmt = $this->conn->prepare("INSERT INTO list (
 			id,
 			name,
-			idType
+			type
 		)
 		VALUES (
 			10,
 			:name,
-			:idType
+			:type
 		)");
 
 		$stmt->bindParam(":name", $this->name);
-		$stmt->bindParam(":idType", $this->idType);
+		$stmt->bindParam(":type", $this->type);
 
 		// Insertion
 		if ($stmt->execute()) {

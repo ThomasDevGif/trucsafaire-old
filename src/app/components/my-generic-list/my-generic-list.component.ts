@@ -24,32 +24,36 @@ export class MyGenericListComponent implements OnInit {
   modeAddItem : boolean = false;
 
   // Data
-  lists: List[] = [
-    {
-      id: 1,
-      name: 'Liste',
-      idType: 1
-    }
-  ];
+  lists: List[];
+  // lists: List[] = [
+  //   {
+  //     id: 1,
+  //     name: 'Liste',
+  //     type: 'course'
+  //   }
+  // ];
 
   items: Item[] = [
     {
       id: 1,
       name: 'Tache 1',
       done: false,
-      date: '30/11/2017'
+      date: '30/11/2017',
+      listId: 1
     },
     {
       id: 2,
       name: 'Tache 2',
       done: false,
-      date: '30/11/2017'
+      date: '30/11/2017',
+      listId: 1
     },
     {
       id: 3,
       name: 'Tache 3',
       done: false,
-      date: '30/11/2017'
+      date: '30/11/2017',
+      listId: 1
     }
   ]
 
@@ -68,7 +72,7 @@ export class MyGenericListComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.restService.getLists().then(res => this.lists = res);
+    this.restService.getLists().then(res => this.lists = res);
   }
 
   open(content) {
@@ -80,7 +84,7 @@ export class MyGenericListComponent implements OnInit {
       let list: List = {
         id: 1,
         name: this.name,
-        idType: 1
+        type: 'course'
       }
       this.lists.push(list);
       this.name = '';
@@ -128,7 +132,8 @@ export class MyGenericListComponent implements OnInit {
         id: 5,
         name: this.inputNewItemName,
         done: false,
-        date: '01/01/0101'
+        date: '01/01/0101',
+        listId: 1
       }
       this.createItemFromEnter(item);
       // Clear input text
