@@ -14,12 +14,10 @@ class List {
 	// create list
 	public function create(){
 		$stmt = $this->conn->prepare("INSERT INTO list (
-			id,
 			name,
 			type
 		)
 		VALUES (
-			10,
 			:name,
 			:type
 		)");

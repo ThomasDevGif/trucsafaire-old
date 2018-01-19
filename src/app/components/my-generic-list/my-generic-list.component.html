@@ -13,7 +13,6 @@
           </button>
         </div>
         <div>
-          <!-- <button type="button" class="btn btn-primary" (click)="open(content)"> -->
           <button type="button" class="btn btn-primary" (click)="addNewItem()">
             <i *ngIf="!modeAddItem" class="fa fa-plus" aria-hidden="true"></i>
             <i *ngIf="modeAddItem" class="fa fa-times" aria-hidden="true"></i>
@@ -56,8 +55,8 @@
   </ngb-tab>
 </ngb-tabset>
 
-<!-- Modal -->
-<ng-template #content let-c="close">
+<!-- Modal exemple -->
+<!-- <ng-template #content let-c="close">
   <div class="modal-header">
     <h4 class="modal-title">Ajouter un item</h4>
     <button type="button" class="close" aria-label="Close" (click)="c('Close click')">
@@ -82,7 +81,7 @@
     <button type="button" class="btn btn-success" (click)="createItem()">Valider</button>
     <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Fermer</button>
   </div>
-</ng-template>
+</ng-template> -->
 
 <!-- If no lists -->
 <div *ngIf="!lists">

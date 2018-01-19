@@ -18,17 +18,20 @@ class Item {
 		$stmt = $this->conn->prepare("INSERT INTO item (
 			name,
 			date,
-			done
+			done,
+			listId
 		)
 		VALUES (
 			:name,
 			:date,
-			:done
+			:done,
+			:listId
 		)");
 
 		$stmt->bindParam(":name", $this->name);
 		$stmt->bindParam(":date", $this->date);
 		$stmt->bindParam(":done", $this->done);
+		$stmt->bindParam(":listId", $this->listId);
 
 		// Insertion
 		if ($stmt->execute()) {

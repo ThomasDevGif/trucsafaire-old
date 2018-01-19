@@ -25,43 +25,14 @@ export class MyGenericListComponent implements OnInit {
 
   // Data
   lists: List[];
-  // lists: List[] = [
-  //   {
-  //     id: 1,
-  //     name: 'Liste',
-  //     type: 'course'
-  //   }
-  // ];
-
-  items: Item[] = [
-    {
-      id: 1,
-      name: 'Tache 1',
-      done: false,
-      date: '30/11/2017',
-      listId: 1
-    },
-    {
-      id: 2,
-      name: 'Tache 2',
-      done: false,
-      date: '30/11/2017',
-      listId: 1
-    },
-    {
-      id: 3,
-      name: 'Tache 3',
-      done: false,
-      date: '30/11/2017',
-      listId: 1
-    }
-  ]
+  items: Item[];
 
   constructor (
     private modalService: NgbModal,
     config: NgbDatepickerConfig,
     private restService: RestService
   ) {
+    // TODO: remove date picker and modal
     let today = new Date();
     this.inputDate = {
       year: today.getFullYear(),
@@ -72,36 +43,41 @@ export class MyGenericListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.restService.getLists().then(res => this.lists = res);
+    // START LOADING
+    this.restService.getLists()
+    .then(function(res) {
+      this.lists = res;
+      return this.restService.getItems();
+    })
+    .then(function(res) {
+      this.items = res;
+    });
+    // STOP LOADING
   }
 
+  /** Open modal dialog */
   open(content) {
     this.modalService.open(content);
   }
 
-  validate() : void {
-    if (this.name != '') {
-      let list: List = {
-        id: 1,
-        name: this.name,
-        type: 'course'
-      }
-      this.lists.push(list);
-      this.name = '';
-    }
-  }
-
+  /** Filter items by done */
   filterItems(done: boolean) : Item[] {
+    if (this.items == null) {
+      return new Array<Item>();
+    }
     return this.items.filter(item => item.done == done);
   }
 
-  createItem() {
-    console.log(this.inputDate);
-  }
-
   /** Create item */
-  createItemFromEnter(item : Item) {
-    this.items.push(item);
+  createItem(item : Item) {
+    // START LOADING
+    this.restService.createItem(item)
+    .then(function() {
+      return this.restService.getItems();
+    })
+    .then(function() {
+      // STOP LOADING
+    });
   }
 
   /** Select or unselect all items */
@@ -129,13 +105,13 @@ export class MyGenericListComponent implements OnInit {
   private handleKeyDown(event: any) {
     if (event.keyCode == 13 && this.inputNewItemName != '') {
       let item : Item = {
-        id: 5,
+        id: null,
         name: this.inputNewItemName,
         done: false,
         date: '01/01/0101',
         listId: 1
       }
-      this.createItemFromEnter(item);
+      this.createItem(item);
       // Clear input text
       this.inputNewItemName = '';
     }

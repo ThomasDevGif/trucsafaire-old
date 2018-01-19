@@ -27,6 +27,20 @@ export class RestService {
     .catch(this.handleError);
   }
 
+  // ITEM
+  createItem(item: Item) : Promise<any> {
+    return this.http.post(this.baseUrl + 'item/createItem.php', item)
+    .toPromise()
+    .catch(this.handleError);
+  }
+
+  getItems() : Promise<Item[]> {
+    return this.http.get(this.baseUrl + 'item/getItems.php')
+    .toPromise()
+    .then(res => res.json() as Item[])
+    .catch(this.handleError);
+  }
+
   /**
    * Generic function to reject promise
    */

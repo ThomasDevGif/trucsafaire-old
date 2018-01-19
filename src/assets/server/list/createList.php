@@ -13,7 +13,7 @@ $data = json_decode(file_get_contents("php://input"));
 
 // set list property values
 $list->name = $data->name;
-$list->idType = $data->idType;
+$list->type = $data->type;
 
 // create the list
 if ($list->create()) {

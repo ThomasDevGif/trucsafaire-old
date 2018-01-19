@@ -19,9 +19,9 @@ export class MyGenericListCreateComponent implements OnInit {
 
   create() {
     let list : List = {
-      id : 1,
+      id : null,
       name : this.name,
-      type : 'course'
+      type : 'simple'
     };
 
     console.log('Create : ' + JSON.stringify(list));
