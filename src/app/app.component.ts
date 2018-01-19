@@ -10,7 +10,7 @@ import { RestService } from './services/rest.service';
 export class AppComponent implements OnInit {
   title = 'Trucs A Faire';
   items = [
-    { name: 'Courses', link: '/' },
+    { name: 'Listes', link: '/' },
     { name: 'Cuisine', link: '/' }
   ]
 
@@ -19,7 +19,6 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.restService.getTypes();
   }
 
 }

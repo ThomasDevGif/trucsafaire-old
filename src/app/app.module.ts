@@ -11,20 +11,20 @@ import { RestService } from './services/rest.service';
 import { NgbDateMomentParserFormatter } from './injectables/custom-date-formatter';
 
 import { AppComponent } from './app.component';
-import { CourseComponent } from './components/course/course.component';
 import { MyGenericItemComponent } from './components/my-generic-item/my-generic-item.component';
 import { MyGenericListComponent } from './components/my-generic-list/my-generic-list.component';
 import { MyGenericListCreateComponent } from './components/my-generic-list-create/my-generic-list-create.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CourseComponent,
     MyGenericItemComponent,
     MyGenericListComponent,
     MyGenericListCreateComponent,
-    AutofocusDirective
+    AutofocusDirective,
+    ListComponent
   ],
   imports: [
     NgbModule.forRoot(),
