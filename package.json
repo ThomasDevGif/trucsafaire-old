@@ -2,6 +2,7 @@
   "name": "angular-test",
   "version": "0.0.0",
   "license": "MIT",
+  "homepage": "http://cloudev.fr/trucsafaire/index.html",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
