@@ -15,6 +15,7 @@ import { ConverterService } from '../../utils/converter.service';
 })
 export class MyGenericListComponent implements OnInit {
 
+  // TODO: refacto getItems !
   // Form
   inputNewItemName = '';
   modeAddItem : boolean = false;
@@ -49,6 +50,17 @@ export class MyGenericListComponent implements OnInit {
     .then(function() {
       return scope.restService.getItems();
     })
+    .then(function(resItems) {
+      scope.items = scope.converterService.convertBoolean(resItems);
+      scope.loading = false;
+    });
+  }
+
+  /** Refresh items from server */
+  refreshItems() {
+    let scope = this;
+    scope.loading = true;
+    scope.restService.getItems()
     .then(function(resItems) {
       scope.items = scope.converterService.convertBoolean(resItems);
       scope.loading = false;

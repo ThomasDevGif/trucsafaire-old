@@ -17,6 +17,11 @@
           </button>
         </div>
         <div>
+          <button type="button" class="btn btn-info" (click)="refreshItems()">
+            <i class="fa fa-refresh" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div>
           <button type="button" class="btn btn-primary" (click)="addNewItem()">
             <i *ngIf="!modeAddItem" class="fa fa-plus" aria-hidden="true"></i>
             <i *ngIf="modeAddItem" class="fa fa-times" aria-hidden="true"></i>
