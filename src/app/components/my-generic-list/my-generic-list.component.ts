@@ -4,7 +4,6 @@ import { NgbDatepickerI18n, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstr
 
 import * as moment from 'moment';
 
-import { I18n, CustomDatepickerI18n } from '../../injectables/custom-date-picker-i18n';
 import { List } from '../../models/list';
 import { Item } from '../../models/item';
 import { RestService } from '../../services/rest.service';
@@ -13,14 +12,11 @@ import { ConverterService } from '../../utils/converter.service';
 @Component({
   selector: 'my-generic-list',
   templateUrl: './my-generic-list.component.html',
-  styleUrls: ['./my-generic-list.component.css'],
-  providers: [I18n, {provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n}]
+  styleUrls: ['./my-generic-list.component.css']
 })
 export class MyGenericListComponent implements OnInit {
 
   // Form
-  name: string = '';
-  inputDate;
   inputNewItemName = '';
   modeAddItem : boolean = false;
 
@@ -34,23 +30,9 @@ export class MyGenericListComponent implements OnInit {
     config: NgbDatepickerConfig,
     private restService: RestService,
     private converterService: ConverterService
-  ) {
-    // TODO: remove date picker and modal
-    let today = new Date();
-    this.inputDate = {
-      year: today.getFullYear(),
-      month: today.getMonth()+1,
-      day:  today.getDate()
-    };
-    config.minDate = this.inputDate;
-  }
+  ) { }
 
   ngOnInit() {
-  }
-
-  /** Open modal dialog */
-  open(content) {
-    this.modalService.open(content);
   }
 
   /** Filter items by done */
@@ -103,7 +85,7 @@ export class MyGenericListComponent implements OnInit {
         id: null,
         name: this.inputNewItemName,
         done: false,
-        date: '01/01/0101',
+        date: moment().format("DD/MM/YYYY"),
         listId: 1
       }
       this.createItem(item);

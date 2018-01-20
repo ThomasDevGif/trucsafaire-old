@@ -60,34 +60,6 @@
   </ngb-tab>
 </ngb-tabset>
 
-<!-- Modal exemple -->
-<!-- <ng-template #content let-c="close">
-  <div class="modal-header">
-    <h4 class="modal-title">Ajouter un item</h4>
-    <button type="button" class="close" aria-label="Close" (click)="c('Close click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Nom">
-    </div>
-    <div class="form-group">
-      <div class="input-group">
-        <input class="form-control" placeholder="dd/mm/yyyy" name="dp" [minDate]="minDate"
-        [(ngModel)]="inputDate" ngbDatepicker #d="ngbDatepicker">
-        <button class="input-group-addon" (click)="d.toggle()" type="button">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="createItem()">Valider</button>
-    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Fermer</button>
-  </div>
-</ng-template> -->
-
 <!-- If no lists -->
 <div *ngIf="!lists">
   <my-generic-list-create></my-generic-list-create>
