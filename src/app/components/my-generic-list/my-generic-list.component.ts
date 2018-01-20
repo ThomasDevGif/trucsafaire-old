@@ -1,6 +1,5 @@
 import { Component, OnInit, Injectable, Input } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { NgbDatepickerI18n, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import * as moment from 'moment';
 
@@ -27,7 +26,6 @@ export class MyGenericListComponent implements OnInit {
 
   constructor (
     private modalService: NgbModal,
-    config: NgbDatepickerConfig,
     private restService: RestService,
     private converterService: ConverterService
   ) { }

@@ -17,6 +17,7 @@ import { MyGenericListComponent } from './components/my-generic-list/my-generic-
 import { MyGenericListCreateComponent } from './components/my-generic-list-create/my-generic-list-create.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { ListComponent } from './components/list/list.component';
+import { MyGenericLoaderComponent } from './components/my-generic-loader/my-generic-loader.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ListComponent } from './components/list/list.component';
     MyGenericListComponent,
     MyGenericListCreateComponent,
     AutofocusDirective,
-    ListComponent
+    ListComponent,
+    MyGenericLoaderComponent
   ],
   imports: [
     NgbModule.forRoot(),

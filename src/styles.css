@@ -7,6 +7,12 @@
   margin-bottom: 20px;
 }
 
+.my-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .my-margin-bottom {
   margin-bottom: 5px;
 }
