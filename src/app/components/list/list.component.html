@@ -1,3 +1,6 @@
 <div class="container my-container">
-  <my-generic-list></my-generic-list>
+  <my-generic-list *ngIf="!loading" [lists]="lists" [items]="items"></my-generic-list>
+  <div *ngIf="loading">
+    Chargement...
+  </div>
 </div>

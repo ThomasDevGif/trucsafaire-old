@@ -1,4 +1,9 @@
-<ngb-tabset *ngIf="lists">
+
+<div *ngIf="loading">
+  Chargement...
+</div>
+<div *ngIf="!loading">
+  <ngb-tabset *ngIf="lists">
   <!-- Tabs lists -->
   <ngb-tab *ngFor="let list of lists" title="{{list.name}}">
     <ng-template ngbTabContent>
@@ -86,4 +91,5 @@
 <!-- If no lists -->
 <div *ngIf="!lists">
   <my-generic-list-create></my-generic-list-create>
+</div>
 </div>

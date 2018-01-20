@@ -8,6 +8,7 @@ import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { DndModule } from 'ng2-dnd';
 
 import { RestService } from './services/rest.service';
+import { ConverterService } from './utils/converter.service';
 import { NgbDateMomentParserFormatter } from './injectables/custom-date-formatter';
 
 import { AppComponent } from './app.component';
@@ -36,6 +37,7 @@ import { ListComponent } from './components/list/list.component';
   ],
   providers: [
     RestService,
+    ConverterService,
     {
       provide: NgbDateParserFormatter,
       useFactory: () => { return new NgbDateMomentParserFormatter("DD/MM/YYYY") }

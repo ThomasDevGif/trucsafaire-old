@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable, } from '@angular/core';
+import { Component, OnInit, Injectable, Input } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDatepickerI18n, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 
@@ -8,6 +8,7 @@ import { I18n, CustomDatepickerI18n } from '../../injectables/custom-date-picker
 import { List } from '../../models/list';
 import { Item } from '../../models/item';
 import { RestService } from '../../services/rest.service';
+import { ConverterService } from '../../utils/converter.service';
 
 @Component({
   selector: 'my-generic-list',
@@ -24,13 +25,15 @@ export class MyGenericListComponent implements OnInit {
   modeAddItem : boolean = false;
 
   // Data
-  lists: List[];
-  items: Item[];
+  loading: boolean;
+  @Input() lists: List[];
+  @Input() items: Item[];
 
   constructor (
     private modalService: NgbModal,
     config: NgbDatepickerConfig,
-    private restService: RestService
+    private restService: RestService,
+    private converterService: ConverterService
   ) {
     // TODO: remove date picker and modal
     let today = new Date();
@@ -43,16 +46,6 @@ export class MyGenericListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // START LOADING
-    this.restService.getLists()
-    .then(function(res) {
-      this.lists = res;
-      return this.restService.getItems();
-    })
-    .then(function(res) {
-      this.items = res;
-    });
-    // STOP LOADING
   }
 
   /** Open modal dialog */
@@ -70,13 +63,15 @@ export class MyGenericListComponent implements OnInit {
 
   /** Create item */
   createItem(item : Item) {
-    // START LOADING
-    this.restService.createItem(item)
+    let scope = this;
+    scope.loading = true;
+    scope.restService.createItem(item)
     .then(function() {
-      return this.restService.getItems();
+      return scope.restService.getItems();
     })
-    .then(function() {
-      // STOP LOADING
+    .then(function(resItems) {
+      scope.items = scope.converterService.convertBoolean(resItems);
+      scope.loading = false;
     });
   }
 
