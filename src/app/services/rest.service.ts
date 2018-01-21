@@ -9,6 +9,7 @@ import { List } from '../models/list';
 export class RestService {
 
   private baseUrl = './assets/server/';
+  private headers = new Headers();
 
   constructor(private http: Http) { }
 
@@ -38,6 +39,12 @@ export class RestService {
     return this.http.get(this.baseUrl + 'item/getItems.php')
     .toPromise()
     .then(res => res.json() as Item[])
+    .catch(this.handleError);
+  }
+
+  deleteItem(item: Item) : Promise<any> {
+    return this.http.post(this.baseUrl + 'item/deleteItem.php', item)
+    .toPromise()
     .catch(this.handleError);
   }
 

@@ -77,10 +77,16 @@ export class MyGenericListComponent implements OnInit {
   /** Delete an item */
   deleteItem($event : any) {
     var item = $event.dragData;
-    var index = this.items.indexOf(item, 0);
-    if (index > -1) {
-       this.items.splice(index, 1);
-    }
+    let scope = this;
+    scope.loading = true;
+    scope.restService.deleteItem(item)
+    .then(function(res) {
+      return scope.restService.getItems();
+    })
+    .then(function(resItems) {
+      scope.items = scope.converterService.convertBoolean(resItems);
+      scope.loading = false;
+    });
   }
 
   /** Allow user to add new items */
