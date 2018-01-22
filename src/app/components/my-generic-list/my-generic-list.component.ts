@@ -26,7 +26,6 @@ export class MyGenericListComponent implements OnInit {
   @Input() items: Item[];
 
   constructor (
-    private modalService: NgbModal,
     private restService: RestService,
     private converterService: ConverterService
   ) { }

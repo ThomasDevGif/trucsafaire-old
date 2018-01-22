@@ -48,6 +48,12 @@ export class RestService {
     .catch(this.handleError);
   }
 
+  updateItem(item: Item) : Promise<any> {
+    return this.http.post(this.baseUrl + 'item/updateItem.php', item)
+    .toPromise()
+    .catch(this.handleError);
+  }
+
   /**
    * Generic function to reject promise
    */
