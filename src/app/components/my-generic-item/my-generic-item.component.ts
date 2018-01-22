@@ -11,6 +11,7 @@ import { RestService } from '../../services/rest.service';
 export class MyGenericItemComponent implements OnInit {
 
   @Input() item: Item;
+  loading: boolean = false;
 
   constructor(private restService: RestService) { }
 
@@ -18,10 +19,11 @@ export class MyGenericItemComponent implements OnInit {
   }
 
   action() {
-    this.item.done = !this.item.done;
-    this.restService.updateItem(this.item).then(function(res) {
-      console.log('updated');
-      console.log(res);
+    let scope = this;
+    scope.loading = true;
+    scope.item.done = !scope.item.done;
+    scope.restService.updateItem(scope.item).then(function(res) {
+      scope.loading = false;
     });
   }
 

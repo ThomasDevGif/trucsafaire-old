@@ -1,6 +1,24 @@
-.my-item-don {
-  text-decoration: line-through;
+.loader {
+    border: 2px solid #f3f3f3;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    border-top: 5px solid #555;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
 }
+
+.my-item-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans);
 

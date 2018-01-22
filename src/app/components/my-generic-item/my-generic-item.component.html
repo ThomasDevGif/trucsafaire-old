@@ -1,2 +1,2 @@
 <input id="{{item.name}}" [(ngModel)]="item.done" type="checkbox">
-<label for="{{item.name}}" (click)="action()">{{item.name}}</label>
+<label for="{{item.name}}" (click)="action()" class="my-item-label">{{item.name}}<div *ngIf="loading" class="loader"></div></label>
