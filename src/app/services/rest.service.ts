@@ -14,10 +14,9 @@ export class RestService {
   constructor(private http: Http) { }
 
   // LIST
-  createList(list: List) {
-    this.http.post(this.baseUrl + 'list/createList.php', list)
+  createList(list: List) : Promise<any> {
+    return this.http.post(this.baseUrl + 'list/createList.php', list)
     .toPromise()
-    .then(res => console.log(res))
     .catch(this.handleError);
   }
 
@@ -37,6 +36,13 @@ export class RestService {
 
   getItems() : Promise<Item[]> {
     return this.http.get(this.baseUrl + 'item/getItems.php')
+    .toPromise()
+    .then(res => res.json() as Item[])
+    .catch(this.handleError);
+  }
+
+  getItemsByList(listId) : Promise<Item[]> {
+    return this.http.post(this.baseUrl + 'item/getItemsByList.php', listId)
     .toPromise()
     .then(res => res.json() as Item[])
     .catch(this.handleError);

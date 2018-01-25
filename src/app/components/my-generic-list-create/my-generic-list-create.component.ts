@@ -25,7 +25,10 @@ export class MyGenericListCreateComponent implements OnInit {
     };
 
     console.log('Create : ' + JSON.stringify(list));
-    this.restService.createList(list);
+    this.restService.createList(list)
+    .then(function(res) {
+      console.log(res);
+    });
   }
 
 }

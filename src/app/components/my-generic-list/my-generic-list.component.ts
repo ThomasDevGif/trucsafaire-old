@@ -15,7 +15,6 @@ import { ConverterService } from '../../utils/converter.service';
 })
 export class MyGenericListComponent implements OnInit {
 
-  // TODO: refacto getItems !
   // Form
   inputNewItemName = '';
   modeAddItem : boolean = false;
@@ -33,6 +32,17 @@ export class MyGenericListComponent implements OnInit {
   ngOnInit() {
   }
 
+  /** Refresh items from server */
+  refreshItems() {
+    let scope = this;
+    scope.loading = true;
+    scope.restService.getItems()
+    .then(function(resItems) {
+      scope.items = scope.converterService.convertBoolean(resItems);
+      scope.loading = false;
+    });
+  }
+
   /** Filter items by done */
   filterItems(done: boolean) : Item[] {
     if (this.items == null) {
@@ -47,22 +57,7 @@ export class MyGenericListComponent implements OnInit {
     scope.loading = true;
     scope.restService.createItem(item)
     .then(function() {
-      return scope.restService.getItems();
-    })
-    .then(function(resItems) {
-      scope.items = scope.converterService.convertBoolean(resItems);
-      scope.loading = false;
-    });
-  }
-
-  /** Refresh items from server */
-  refreshItems() {
-    let scope = this;
-    scope.loading = true;
-    scope.restService.getItems()
-    .then(function(resItems) {
-      scope.items = scope.converterService.convertBoolean(resItems);
-      scope.loading = false;
+      scope.refreshItems();
     });
   }
 
@@ -80,11 +75,7 @@ export class MyGenericListComponent implements OnInit {
     scope.loading = true;
     scope.restService.deleteItem(item)
     .then(function(res) {
-      return scope.restService.getItems();
-    })
-    .then(function(resItems) {
-      scope.items = scope.converterService.convertBoolean(resItems);
-      scope.loading = false;
+      scope.refreshItems();
     });
   }
 
