@@ -1,7 +1,6 @@
 <?php
 class Item {
 	private $conn;
-	private $table_name= "item";
 
 	public $id;
 	public $name;

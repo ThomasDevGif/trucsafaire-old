@@ -39,7 +39,6 @@ export class MyGenericListComponent implements OnInit {
     scope.loading = true;
     scope.restService.getItemsByList(scope.list.id)
     .then(function(resItems) {
-      console.log(resItems);
       scope.items = scope.converterService.convertBoolean(resItems);
       scope.loading = false;
     });

@@ -1,27 +1,23 @@
 <?php
 // get database connection
 include_once '../config/database.php';
-$database = new Database();
-$db = $database->getConnection();
 
-// instantiate list object
-include_once './list.php';
-$list = new List($db);
+// Display lists
+function createList() {
+  $database = new Database();
+  $db = $database->getConnection();
 
-// get posted data
-$data = json_decode(file_get_contents("php://input"));
+  // Get posted data
+  $data = json_decode(file_get_contents("php://input"));
+  $name = $data->name;
+  $type = $data->type;
 
-// set list property values
-$list->name = $data->name;
-$list->type = $data->type;
-
-// create the list
-if ($list->create()) {
-    echo "List was created.";
+  $stmt = $db->prepare("INSERT INTO list (name, type) VALUES (:name, :type);");
+  $stmt->bindParam(':name', $name);
+  $stmt->bindParam(':type', $type);
+  $stmt->execute();
 }
 
-// if unable to create the list, tell the list
-else {
-    echo "Unable to create list.";
-}
+// Execute
+createList();
 ?>

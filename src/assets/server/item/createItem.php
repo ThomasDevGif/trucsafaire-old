@@ -18,12 +18,9 @@ $item->done = $data->done;
 $item->listId = $data->listId;
 
 // create the item
-if($item->create()){
-    echo "Item was created.";
-}
-
-// if unable to create the item, tell the item
-else{
-    echo "Unable to create item.";
+if ($item->create()) {
+  http_response_code(200);
+} else {
+  http_response_code(500);
 }
 ?>
