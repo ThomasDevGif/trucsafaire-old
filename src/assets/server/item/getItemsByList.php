@@ -6,16 +6,14 @@ $db = $database->getConnection();
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
-$listId = $data->listId;
+$listId = $data;
 
-$sql = "SELECT * FROM item WHERE listId = :listId";
+$sql = "SELECT * FROM item WHERE listId = :listId ORDER BY id DESC";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':listId', $listId);
-
-if($stmt->execute()){
-  http_response_code(200);
-} else {
-  http_response_code(404);
-}
+$stmt->execute();
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$json = json_encode($results);
+echo $json;
 
 ?>

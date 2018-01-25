@@ -15,7 +15,6 @@ export class ListComponent implements OnInit {
   // Data
   loading: boolean;
   lists: List[];
-  items: Item[];
 
   constructor(
     private restService: RestService,
@@ -28,10 +27,6 @@ export class ListComponent implements OnInit {
     scope.restService.getLists()
     .then(function(resLists) {
       scope.lists = resLists;
-      return scope.restService.getItems();
-    })
-    .then(function(resItems) {
-      scope.items = scope.converterService.convertBoolean(resItems);
       scope.loading = false;
     })
     .catch(function(err) {
