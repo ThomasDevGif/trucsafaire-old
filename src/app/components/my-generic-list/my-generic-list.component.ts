@@ -93,7 +93,7 @@ export class MyGenericListComponent implements OnInit {
         name: this.inputNewItemName,
         done: false,
         date: moment().format("DD/MM/YYYY"),
-        listId: 1
+        listId: this.list.id
       }
       this.createItem(item);
       // Clear input text
