@@ -60,8 +60,8 @@ export class RestService {
     .catch(this.handleError);
   }
 
-  deleteItems(items: Item[], list: List) : Promise<any> {
-    return this.http.post(this.baseUrl + 'item/deleteItems.php', {items: items, listId: list.id})
+  deleteItemsByList(list: List) : Promise<any> {
+    return this.http.post(this.baseUrl + 'item/deleteItems.php', list.id)
     .toPromise()
     .catch(this.handleError);
   }
