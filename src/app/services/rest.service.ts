@@ -27,6 +27,12 @@ export class RestService {
     .catch(this.handleError);
   }
 
+  deleteList(list: List) : Promise<any> {
+    return this.http.post(this.baseUrl + 'list/deleteList.php', list.id)
+    .toPromise()
+    .catch(this.handleError);
+  }
+
   // ITEM
   createItem(item: Item) : Promise<any> {
     return this.http.post(this.baseUrl + 'item/createItem.php', item)
@@ -49,7 +55,13 @@ export class RestService {
   }
 
   deleteItem(item: Item) : Promise<any> {
-    return this.http.post(this.baseUrl + 'item/deleteItem.php', item)
+    return this.http.post(this.baseUrl + 'item/deleteItem.php', item.id)
+    .toPromise()
+    .catch(this.handleError);
+  }
+
+  deleteItems(items: Item[], list: List) : Promise<any> {
+    return this.http.post(this.baseUrl + 'item/deleteItems.php', {items: items, listId: list.id})
     .toPromise()
     .catch(this.handleError);
   }

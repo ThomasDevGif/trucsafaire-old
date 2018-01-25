@@ -18,7 +18,7 @@
       <i *ngIf="!modeAddItem" class="fa fa-plus" aria-hidden="true"></i>
       <i *ngIf="modeAddItem" class="fa fa-times" aria-hidden="true"></i>
     </button>
-    <button dnd-droppable (onDropSuccess)="deleteItem($event)" type="button" class="btn btn-warning"oninvalid="">
+    <button dnd-droppable (onDropSuccess)="deleteItem($event)" type="button" class="btn btn-warning" oninvalid="" (click)="deleteList()">
       <i class="fa fa-trash" aria-hidden="true"></i>
     </button>
   </div>

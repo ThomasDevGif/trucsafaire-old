@@ -4,7 +4,7 @@
   <!-- Tabs lists -->
   <ngb-tab *ngFor="let list of lists" title="{{list.name}}">
     <ng-template ngbTabContent>
-      <my-generic-list *ngIf="!loading" [list]="list"></my-generic-list>
+      <my-generic-list *ngIf="!loading" [list]="list" (refreshDataEvent)="refreshLists($event)"></my-generic-list>
     </ng-template>
   </ngb-tab>
 

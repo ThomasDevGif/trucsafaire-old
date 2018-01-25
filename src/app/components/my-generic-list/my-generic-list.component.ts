@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable, Input } from '@angular/core';
+import { Component, OnInit, Injectable, Input, Output, EventEmitter } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 import * as moment from 'moment';
@@ -23,6 +23,9 @@ export class MyGenericListComponent implements OnInit {
   loading: boolean;
   items: Item[];
   @Input() list: List;
+
+  // Emitter to get data from parent
+  @Output() refreshDataEvent = new EventEmitter<Object>();
 
   constructor (
     private restService: RestService,
@@ -77,6 +80,17 @@ export class MyGenericListComponent implements OnInit {
     scope.restService.deleteItem(item)
     .then(function(res) {
       scope.refreshItems();
+    });
+  }
+
+  /** Delete an list */
+  deleteList() {
+    let scope = this;
+    scope.loading = true;
+    scope.restService.deleteList(scope.list)
+    .then(function() {
+      scope.loading = false;
+      scope.refreshDataEvent.next();
     });
   }
 
