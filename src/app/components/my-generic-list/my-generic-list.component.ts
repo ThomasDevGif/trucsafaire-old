@@ -21,8 +21,8 @@ export class MyGenericListComponent implements OnInit {
 
   // Data
   loading: boolean;
-  @Input() lists: List[];
-  @Input() items: Item[];
+  items: Item[];
+  @Input() list: List;
 
   constructor (
     private restService: RestService,
@@ -30,6 +30,7 @@ export class MyGenericListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.refreshItems();
   }
 
   /** Refresh items from server */

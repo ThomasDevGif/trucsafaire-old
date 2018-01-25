@@ -1,6 +1,25 @@
 <div class="container my-container">
-  <div *ngIf="loading">
-    <my-generic-loader></my-generic-loader>
-  </div>
-  <my-generic-list *ngIf="!loading" [lists]="lists" [items]="items"></my-generic-list>
+  <my-generic-loader *ngIf="loading"></my-generic-loader>
+  <ngb-tabset *ngIf="lists">
+  <!-- Tabs lists -->
+  <ngb-tab *ngFor="let list of lists" title="{{list.name}}">
+    <ng-template ngbTabContent>
+      <my-generic-list *ngIf="!loading" [list]="list"></my-generic-list>
+    </ng-template>
+  </ngb-tab>
+
+  <!-- Tab add -->
+  <ngb-tab>
+    <ng-template ngbTabTitle>
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </ng-template>
+    <ng-template ngbTabContent>
+      <br/>
+      <my-generic-list-create></my-generic-list-create>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>
+
+<!-- If no lists -->
+<my-generic-list-create *ngIf="!lists"></my-generic-list-create>
 </div>

@@ -1,71 +1,46 @@
-<div *ngIf="loading">
-  <my-generic-loader></my-generic-loader>
+<!-- Admin layout -->
+<div class="my-card-admin my-margin-top">
+  <div>
+    <button type="button" class="btn btn-info" (click)="selectAll(true)">
+      <i class="fa fa-check-square" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="btn btn-info" (click)="selectAll(false)">
+      <i class="fa fa-window-close" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div>
+    <button type="button" class="btn btn-info" (click)="refreshItems()">
+      <i class="fa fa-refresh" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div>
+    <button type="button" class="btn btn-primary" (click)="addNewItem()">
+      <i *ngIf="!modeAddItem" class="fa fa-plus" aria-hidden="true"></i>
+      <i *ngIf="modeAddItem" class="fa fa-times" aria-hidden="true"></i>
+    </button>
+    <button dnd-droppable (onDropSuccess)="deleteItem($event)" type="button" class="btn btn-warning"oninvalid="">
+      <i class="fa fa-trash" aria-hidden="true"></i>
+    </button>
+  </div>
 </div>
+<my-generic-loader *ngIf="loading" style="margin-top: 10px;"></my-generic-loader>
 <div *ngIf="!loading">
-  <ngb-tabset *ngIf="lists">
-  <!-- Tabs lists -->
-  <ngb-tab *ngFor="let list of lists" title="{{list.name}}">
-    <ng-template ngbTabContent>
-      <!-- Admin layout -->
-      <div class="my-card-admin my-margin-top">
-        <div>
-          <button type="button" class="btn btn-info" (click)="selectAll(true)">
-            <i class="fa fa-check-square" aria-hidden="true"></i>
-          </button>
-          <button type="button" class="btn btn-info" (click)="selectAll(false)">
-            <i class="fa fa-window-close" aria-hidden="true"></i>
-          </button>
-        </div>
-        <div>
-          <button type="button" class="btn btn-info" (click)="refreshItems()">
-            <i class="fa fa-refresh" aria-hidden="true"></i>
-          </button>
-        </div>
-        <div>
-          <button type="button" class="btn btn-primary" (click)="addNewItem()">
-            <i *ngIf="!modeAddItem" class="fa fa-plus" aria-hidden="true"></i>
-            <i *ngIf="modeAddItem" class="fa fa-times" aria-hidden="true"></i>
-          </button>
-          <button dnd-droppable (onDropSuccess)="deleteItem($event)" type="button" class="btn btn-warning"oninvalid="">
-            <i class="fa fa-trash" aria-hidden="true"></i>
-          </button>
-        </div>
+  <!-- List -->
+  <ul class="list-group my-margin-top">
+    <li class="list-group-item active">A faire ({{filterItems(false).length}})</li>
+    <li class="list-group-item" dnd-sortable-container [sortableData]="items">
+      <div *ngFor="let item of filterItems(false); let i = index" dnd-draggable [dragEnabled]="true" [dragData]="item" dnd-sortable [sortableIndex]="i">
+        <my-generic-item [item]="item"></my-generic-item>
       </div>
-      <!-- List -->
-      <ul class="list-group my-margin-top">
-        <li class="list-group-item active">A faire ({{filterItems(false).length}})</li>
-        <li class="list-group-item" dnd-sortable-container [sortableData]="items">
-          <div *ngFor="let item of filterItems(false); let i = index" dnd-draggable [dragEnabled]="true" [dragData]="item" dnd-sortable [sortableIndex]="i">
-            <my-generic-item [item]="item"></my-generic-item>
-          </div>
-          <input style="margin-top: 20px;" myAutofocus *ngIf="modeAddItem" type="text" class="form-control" placeholder="Item" (keydown)="handleKeyDown($event)" [(ngModel)]="inputNewItemName">
-        </li>
-      </ul>
-      <ul class="list-group my-margin-top">
-        <li class="list-group-item active">Faits ({{filterItems(true).length}})</li>
-        <li class="list-group-item" dnd-sortable-container [sortableData]="items">
-          <div *ngFor="let item of filterItems(true); let i = index" dnd-draggable [dragEnabled]="true" [dragData]="item" dnd-sortable [sortableIndex]="i">
-            <my-generic-item [item]="item"></my-generic-item>
-          </div>
-        </li>
-      </ul>
-    </ng-template>
-  </ngb-tab>
-
-  <!-- Tab add -->
-  <ngb-tab>
-    <ng-template ngbTabTitle>
-      <i class="fa fa-plus" aria-hidden="true"></i>
-    </ng-template>
-    <ng-template ngbTabContent>
-      <br/>
-      <my-generic-list-create></my-generic-list-create>
-    </ng-template>
-  </ngb-tab>
-</ngb-tabset>
-
-<!-- If no lists -->
-<div *ngIf="!lists">
-  <my-generic-list-create></my-generic-list-create>
-</div>
+      <input style="margin-top: 20px;" myAutofocus *ngIf="modeAddItem" type="text" class="form-control" placeholder="Item" (keydown)="handleKeyDown($event)" [(ngModel)]="inputNewItemName">
+    </li>
+  </ul>
+  <ul class="list-group my-margin-top">
+    <li class="list-group-item active">Faits ({{filterItems(true).length}})</li>
+    <li class="list-group-item" dnd-sortable-container [sortableData]="items">
+      <div *ngFor="let item of filterItems(true); let i = index" dnd-draggable [dragEnabled]="true" [dragData]="item" dnd-sortable [sortableIndex]="i">
+        <my-generic-item [item]="item"></my-generic-item>
+      </div>
+    </li>
+  </ul>
 </div>
