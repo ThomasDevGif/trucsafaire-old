@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { List } from '../../models/list';
 import { RestService } from '../../services/rest.service';
@@ -10,7 +10,10 @@ import { RestService } from '../../services/rest.service';
 })
 export class MyGenericListCreateComponent implements OnInit {
 
-  name: string;
+  name: string = '';
+  loading: boolean = false;
+  // Emitter to get data from parent
+  @Output() refreshDataEvent = new EventEmitter<Object>();
 
   constructor(private restService: RestService) { }
 
@@ -18,16 +21,19 @@ export class MyGenericListCreateComponent implements OnInit {
   }
 
   create() {
+    let scope = this;
     let list : List = {
       id : null,
-      name : this.name,
+      name : scope.name,
       type : 'simple'
     };
 
-    console.log('Create : ' + JSON.stringify(list));
-    this.restService.createList(list)
+    scope.loading = true;
+    scope.restService.createList(list)
     .then(function(res) {
-      console.log(res);
+      scope.refreshDataEvent.next();
+      scope.name = '';
+      scope.loading = false;
     });
   }
 

@@ -22,15 +22,16 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.refreshLists();
+  }
+
+  refreshLists() {
     let scope = this;
     scope.loading = true;
     scope.restService.getLists()
     .then(function(resLists) {
       scope.lists = resLists;
       scope.loading = false;
-    })
-    .catch(function(err) {
-      console.log('ERROR: ' + err);
     });
   }
 

@@ -1,3 +1,4 @@
+<my-generic-loader *ngIf="loading"></my-generic-loader>
 <h4 class="my-margin-top">Créer une liste</h4>
 <div class="form-group">
   <div class="input-group">
@@ -7,4 +8,4 @@
     <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="name">
   </div>
 </div>
-<button type="button" class="btn btn-primary" (click)="create()">Valider</button>
+<button type="button" class="btn btn-primary" [disabled]="name == ''" (click)="create()">Valider</button>

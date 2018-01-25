@@ -15,11 +15,11 @@
     </ng-template>
     <ng-template ngbTabContent>
       <br/>
-      <my-generic-list-create></my-generic-list-create>
+      <my-generic-list-create (refreshDataEvent)="refreshLists($event)"></my-generic-list-create>
     </ng-template>
   </ngb-tab>
 </ngb-tabset>
 
 <!-- If no lists -->
-<my-generic-list-create *ngIf="!lists"></my-generic-list-create>
+<my-generic-list-create *ngIf="!lists" (refreshDataEvent)="refreshLists($event)"></my-generic-list-create>
 </div>
