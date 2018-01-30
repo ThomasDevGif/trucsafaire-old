@@ -31,10 +31,17 @@ export class MyGenericListCreateComponent implements OnInit {
     scope.loading = true;
     scope.restService.createList(list)
     .then(function(res) {
-      scope.refreshDataEvent.next();
-      scope.name = '';
       scope.loading = false;
+      scope.refreshDataEvent.next(scope.name);
+      scope.name = '';
     });
+  }
+
+  /** Create list on press enter */
+  private handleKeyDown(event: any) {
+    if (event.keyCode == 13 && this.name != '') {
+      this.create();
+    }
   }
 
 }

@@ -5,7 +5,7 @@
     <div class="input-group-addon">
       <i class="fa fa-list" aria-hidden="true"></i>
     </div>
-    <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="name">
+    <input myAutofocus type="text" class="form-control" placeholder="Nom" (keydown)="handleKeyDown($event)" [(ngModel)]="name">
   </div>
 </div>
 <button type="button" class="btn btn-primary" [disabled]="name == ''" (click)="create()">Valider</button>

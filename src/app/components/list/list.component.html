@@ -1,8 +1,8 @@
 <div class="container my-container">
   <my-generic-loader *ngIf="loading"></my-generic-loader>
-  <ngb-tabset *ngIf="lists">
+  <ngb-tabset *ngIf="lists" #tabLists="ngbTabset">
   <!-- Tabs lists -->
-  <ngb-tab *ngFor="let list of lists" title="{{list.name}}">
+  <ngb-tab *ngFor="let list of lists" title="{{list.name}}" id="{{list.name}}">
     <ng-template ngbTabContent>
       <my-generic-list *ngIf="!loading" [list]="list" (refreshDataEvent)="refreshLists($event)"></my-generic-list>
     </ng-template>

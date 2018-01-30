@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { List } from '../../models/list';
 import { Item } from '../../models/item';
@@ -13,6 +13,7 @@ import { ConverterService } from '../../utils/converter.service';
 export class ListComponent implements OnInit {
 
   // Data
+  @ViewChild('tabLists') tabLists;
   loading: boolean;
   lists: List[];
 
@@ -22,16 +23,20 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.refreshLists();
+    this.refreshLists(null);
   }
 
-  refreshLists() {
+  refreshLists(changeTab) {
     let scope = this;
     scope.loading = true;
     scope.restService.getLists()
     .then(function(resLists) {
       scope.lists = resLists;
       scope.loading = false;
+      if (null != changeTab) {
+        // TODO: select created list
+        // scope.tabLists.select(changeTab);
+      }
     });
   }
 

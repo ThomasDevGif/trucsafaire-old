@@ -1,5 +1,5 @@
 import { Component, OnInit, Injectable, Input, Output, EventEmitter } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import * as moment from 'moment';
 
@@ -29,7 +29,8 @@ export class MyGenericListComponent implements OnInit {
 
   constructor (
     private restService: RestService,
-    private converterService: ConverterService
+    private converterService: ConverterService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -65,13 +66,6 @@ export class MyGenericListComponent implements OnInit {
     });
   }
 
-  /** Select or unselect all items */
-  selectAll(select : boolean) {
-    for (let item of this.items) {
-      item.done = select;
-    }
-  }
-
   /** Delete an item */
   deleteItem($event : any) {
     var item = $event.dragData;
@@ -94,6 +88,18 @@ export class MyGenericListComponent implements OnInit {
     .then(function() {
       scope.loading = false;
       scope.refreshDataEvent.next();
+    });
+  }
+
+  /** Open modal dialog */
+  openModal(content) {
+    let scope = this;
+    scope.modalService.open(content).result.then(function(result) {
+      if (result == 'delete') {
+        scope.deleteList();
+      }
+    }, (reason) => {
+      // Do nothing on esc click
     });
   }
 
