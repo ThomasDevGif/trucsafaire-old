@@ -18,6 +18,7 @@ import { MyGenericListCreateComponent } from './components/my-generic-list-creat
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { ListComponent } from './components/list/list.component';
 import { MyGenericLoaderComponent } from './components/my-generic-loader/my-generic-loader.component';
+import { MyGenericModalConfirmComponent } from './components/my-generic-modal-confirm/my-generic-modal-confirm.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MyGenericLoaderComponent } from './components/my-generic-loader/my-gene
     MyGenericListCreateComponent,
     AutofocusDirective,
     ListComponent,
-    MyGenericLoaderComponent
+    MyGenericLoaderComponent,
+    MyGenericModalConfirmComponent
   ],
   imports: [
     NgbModule.forRoot(),
