@@ -21,8 +21,10 @@
   <ul class="list-group my-margin-top">
     <li class="list-group-item active">A faire ({{filterItems(false).length}})</li>
     <li class="list-group-item" dnd-sortable-container [sortableData]="items">
-      <div *ngFor="let item of filterItems(false); let i = index" dnd-draggable [dragEnabled]="true" [dragData]="item" dnd-sortable [sortableIndex]="i">
-        <my-generic-item [item]="item"></my-generic-item>
+      <div class="row">
+        <div class="col-md-6" *ngFor="let item of filterItems(false); let i = index" dnd-draggable [dragEnabled]="true" [dragData]="item" dnd-sortable [sortableIndex]="i">
+          <my-generic-item [item]="item"></my-generic-item>
+        </div>
       </div>
       <input style="margin-top: 20px;" myAutofocus *ngIf="modeAddItem" type="text" class="form-control" placeholder="Item" (keydown)="handleKeyDown($event)" [(ngModel)]="inputNewItemName">
     </li>
@@ -30,8 +32,10 @@
   <ul class="list-group my-margin-top">
     <li class="list-group-item active">Faits ({{filterItems(true).length}})</li>
     <li class="list-group-item" dnd-sortable-container [sortableData]="items">
-      <div *ngFor="let item of filterItems(true); let i = index" dnd-draggable [dragEnabled]="true" [dragData]="item" dnd-sortable [sortableIndex]="i">
-        <my-generic-item [item]="item"></my-generic-item>
+      <div class="row">
+        <div class="col-md-6" *ngFor="let item of filterItems(true); let i = index" dnd-draggable [dragEnabled]="true" [dragData]="item" dnd-sortable [sortableIndex]="i">
+          <my-generic-item [item]="item"></my-generic-item>
+        </div>
       </div>
     </li>
   </ul>
