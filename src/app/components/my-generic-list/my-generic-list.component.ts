@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { List } from '../../models/list';
 import { Item } from '../../models/item';
 import { RestService } from '../../services/rest.service';
+import { SettingsService } from '../../services/settings.service';
 import { ConverterService } from '../../utils/converter.service';
 
 @Component({
@@ -19,6 +20,9 @@ export class MyGenericListComponent implements OnInit {
   inputNewItemName = '';
   modeAddItem : boolean = false;
 
+  // Settings
+  listGridOption: string;
+
   // Data
   loading: boolean;
   items: Item[];
@@ -30,10 +34,12 @@ export class MyGenericListComponent implements OnInit {
   constructor (
     private restService: RestService,
     private converterService: ConverterService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private settingsService: SettingsService
   ) { }
 
   ngOnInit() {
+    this.listGridOption = this.settingsService.getListGridOption();
     this.refreshItems();
   }
 
@@ -106,6 +112,12 @@ export class MyGenericListComponent implements OnInit {
   /** Allow user to add new items */
   addNewItem() {
     this.modeAddItem = !this.modeAddItem;
+  }
+
+  /** Save grid option in user preferences */
+  setListGridOption(listGridOption: string) {
+    this.settingsService.setListGridOption(listGridOption);
+    this.listGridOption = listGridOption;
   }
 
   /** Create item on press enter */

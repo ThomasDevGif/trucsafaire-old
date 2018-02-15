@@ -9,6 +9,7 @@ import { DndModule } from 'ng2-dnd';
 
 import { RestService } from './services/rest.service';
 import { AuthentificationService } from './services/authentification.service';
+import { SettingsService } from './services/settings.service';
 import { ConverterService } from './utils/converter.service';
 import { NgbDateMomentParserFormatter } from './injectables/custom-date-formatter';
 
@@ -48,6 +49,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     RestService,
     AuthentificationService,
     ConverterService,
+    SettingsService,
     {
       provide: NgbDateParserFormatter,
       useFactory: () => { return new NgbDateMomentParserFormatter("DD/MM/YYYY") }
