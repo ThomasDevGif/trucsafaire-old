@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../services/rest.service';
+import { AuthentificationService } from '../../services/authentification.service';
 import { User } from '../../models/user';
 
 @Component({
@@ -11,15 +12,18 @@ export class LoginComponent implements OnInit {
 
   // Variables
   loading: boolean = false;
-  displayInputError: boolean = false;
   displayInputNameWarning: boolean = false;
+  displayWrongLogin: boolean = false;
   user: User = {
     id: null,
     name: null,
     password: null
   };
 
-  constructor(private restService: RestService) { }
+  constructor(
+    private restService: RestService,
+    private authentificationService: AuthentificationService
+  ) { }
 
   ngOnInit() {
   }
@@ -27,22 +31,28 @@ export class LoginComponent implements OnInit {
   /** Check if input are valid */
   checkInput() {
     this.displayInputNameWarning = false;
-    if (null == this.user.name || this.user.name == ''
-      || null == this.user.password || this.user.password == '') {
+    this.displayWrongLogin = false;
 
-      this.displayInputError = true;
-      return false;
-    } else {
-      return true;
-    }
+    return !(null == this.user.name || this.user.name == ''
+      || null == this.user.password || this.user.password == '');
   }
 
   /** Log user */
   login() {
-    console.log('Login.');
     if (!this.checkInput()) {
       return;
     }
+    let scope = this;
+    scope.loading = true;
+    scope.restService.getUserByLogin(scope.user)
+    .then(function(resUser) {
+      if (resUser.length > 0) {
+        scope.authentificationService.login(resUser[0]);
+      } else {
+        scope.displayWrongLogin = true;
+      }
+      scope.loading = false;
+    })
   }
 
   /** Register and log user */
@@ -54,7 +64,6 @@ export class LoginComponent implements OnInit {
     scope.loading = true;
     scope.restService.getUserByName(scope.user)
     .then(function(resUser) {
-      console.log(resUser);
       if (resUser.length > 0) {
         scope.displayInputNameWarning = true;
         return;
@@ -63,7 +72,7 @@ export class LoginComponent implements OnInit {
       }
     })
     .then(function(resUser) {
-      scope.resetForm();// TODO only in login
+      scope.resetForm();
       scope.loading = false;
     });
   }

@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
+import { User } from '../models/user';
 
 @Injectable()
 export class AuthentificationService {
 
   constructor() { }
 
-  login(name: string, password: string) {
-    // var user = {};
-    // // REST GET USER
-    // localStorage.setItem('user', JSON.stringify(user));
-    // return user;
-    return null;
+  login(user) {
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   logout() {
-      // Remove user from local storage to log user out
-      localStorage.removeItem('user');
+    localStorage.removeItem('user');
+  }
+
+  getUser() : User {
+    return JSON.parse(localStorage.getItem('user')) as User;
   }
 
 }

@@ -87,6 +87,13 @@ export class RestService {
     .catch(this.handleError);
   }
 
+  getUserByLogin(user: User) : Promise<User[]> {
+    return this.http.post(this.baseUrl + 'user/getUserByLogin.php', user)
+    .toPromise()
+    .then(res => res.json() as User[])
+    .catch(this.handleError);
+  }
+
   /**
    * Generic function to reject promise
    */

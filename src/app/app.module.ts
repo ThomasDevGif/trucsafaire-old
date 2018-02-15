@@ -8,6 +8,7 @@ import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { DndModule } from 'ng2-dnd';
 
 import { RestService } from './services/rest.service';
+import { AuthentificationService } from './services/authentification.service';
 import { ConverterService } from './utils/converter.service';
 import { NgbDateMomentParserFormatter } from './injectables/custom-date-formatter';
 
@@ -43,6 +44,7 @@ import { LoginComponent } from './components/login/login.component';
   ],
   providers: [
     RestService,
+    AuthentificationService,
     ConverterService,
     {
       provide: NgbDateParserFormatter,

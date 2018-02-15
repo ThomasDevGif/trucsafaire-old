@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { List } from '../../models/list';
 import { Item } from '../../models/item';
+import { User } from '../../models/user';
 import { RestService } from '../../services/rest.service';
+import { AuthentificationService } from '../../services/authentification.service';
 import { ConverterService } from '../../utils/converter.service';
 
 @Component({
@@ -16,14 +18,22 @@ export class ListComponent implements OnInit {
   @ViewChild('tabLists') tabLists;
   loading: boolean;
   lists: List[];
+  loggedUser: User;
 
   constructor(
     private restService: RestService,
-    private converterService: ConverterService
+    private authentificationService: AuthentificationService,
+    private converterService: ConverterService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.refreshLists(null);
+    this.loggedUser = this.authentificationService.getUser();
+    if (undefined == this.loggedUser) {
+      this.router.navigate(['/login'])
+    } else {
+      this.refreshLists(null);
+    }
   }
 
   refreshLists(changeTab) {
