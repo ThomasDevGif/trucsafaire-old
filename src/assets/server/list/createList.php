@@ -10,11 +10,11 @@ function createList() {
   // Get posted data
   $data = json_decode(file_get_contents("php://input"));
   $name = $data->name;
-  $type = $data->type;
+  $userId = $data->userId;
 
-  $stmt = $db->prepare("INSERT INTO list (name, type) VALUES (:name, :type);");
+  $stmt = $db->prepare("INSERT INTO list (name, userId) VALUES (:name, :userId);");
   $stmt->bindParam(':name', $name);
-  $stmt->bindParam(':type', $type);
+  $stmt->bindParam(':userId', $userId);
   $stmt->execute();
 }
 

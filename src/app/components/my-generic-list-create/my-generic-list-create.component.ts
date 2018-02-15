@@ -1,7 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { List } from '../../models/list';
+import { User } from '../../models/user';
 import { RestService } from '../../services/rest.service';
+import { AuthentificationService } from '../../services/authentification.service';
 
 @Component({
   selector: 'my-generic-list-create',
@@ -14,10 +16,20 @@ export class MyGenericListCreateComponent implements OnInit {
   loading: boolean = false;
   // Emitter to get data from parent
   @Output() refreshDataEvent = new EventEmitter<Object>();
+  loggedUser: User;
 
-  constructor(private restService: RestService) { }
+  constructor(
+    private restService: RestService,
+    private authentificationService: AuthentificationService,
+    private router: Router
+  ) { }
 
+  // If no logged user in local storage, redirect to login page
   ngOnInit() {
+    this.loggedUser = this.authentificationService.getUser();
+    if (undefined == this.loggedUser) {
+      this.router.navigate(['/login'])
+    }
   }
 
   create() {
@@ -25,12 +37,13 @@ export class MyGenericListCreateComponent implements OnInit {
     let list : List = {
       id : null,
       name : scope.name,
-      userId : 0 // TODO: USE AUTHENTIFICATION SERIVCE
+      userId : this.loggedUser.id
     };
 
     scope.loading = true;
     scope.restService.createList(list)
     .then(function(res) {
+      console.log(res);
       scope.loading = false;
       scope.refreshDataEvent.next(scope.name);
       scope.name = '';

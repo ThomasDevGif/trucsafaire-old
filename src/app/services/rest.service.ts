@@ -21,8 +21,8 @@ export class RestService {
     .catch(this.handleError);
   }
 
-  getLists() : Promise<List[]> {
-    return this.http.get(this.baseUrl + 'list/getLists.php')
+  getListsByUser(user: User) : Promise<List[]> {
+    return this.http.post(this.baseUrl + 'list/getListsByUser.php', user)
     .toPromise()
     .then(res => res.json() as List[])
     .catch(this.handleError);

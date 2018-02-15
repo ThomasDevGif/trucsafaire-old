@@ -41,7 +41,7 @@ export class ListComponent implements OnInit {
   refreshLists(changeTab) {
     let scope = this;
     scope.loading = true;
-    scope.restService.getLists()
+    scope.restService.getListsByUser(scope.loggedUser)
     .then(function(resLists) {
       scope.lists = resLists;
       scope.loading = false;
