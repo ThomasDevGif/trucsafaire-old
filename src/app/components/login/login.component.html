@@ -1,19 +1,27 @@
+<my-generic-loader *ngIf="loading"></my-generic-loader>
 <div class="container my-container">
   <h2>Authentification</h2>
-  <form name="form">
+  <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
     <div class="form-group">
       <label for="name">Identifiant</label>
-      <input type="text" class="form-control" name="name" [(ngModel)]="user.name" required/>
-      <!-- <div *ngIf="f.submitted && !name.valid">Username is required</div> -->
+      <input type="text" class="form-control" name="name" [(ngModel)]="user.name" #name="ngModel" required/>
+      <div *ngIf="f.submitted || displayInputError && !name.valid" class="alert alert-dismissible alert-danger my-margin-top">
+        L'<strong>identifiant</strong> est obligatoire.
+      </div>
     </div>
     <div class="form-group">
       <label for="password">Mot de passe</label>
-      <input type="password" class="form-control" name="password" [(ngModel)]="user.password" required/>
-      <!-- <div *ngIf="f.submitted && !password.valid">Password is required</div> -->
-    </div>
-    <div class="form-group">
-      <button class="btn btn-primary">Se connecter</button>
-      <button class="btn">S'inscrire</button>
+      <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel" required/>
+      <div *ngIf="f.submitted || displayInputError && !password.valid" class="alert alert-dismissible alert-danger my-margin-top">
+        Le <strong>mot de passe</strong> est obligatoire.
+      </div>
     </div>
   </form>
+  <div *ngIf="displayInputNameWarning" class="alert alert-warning my-margin-top">
+    L'<strong>identifiant</strong> est déjà utilisé.
+  </div>
+  <div class="my-row">
+    <button class="btn btn-primary" (click)="login()">Se connecter</button>
+    <button class="btn my-margin-left" (click)="register()">S'inscrire</button>
+  </div>
 </div>

@@ -25,7 +25,7 @@ export class MyGenericListCreateComponent implements OnInit {
     let list : List = {
       id : null,
       name : scope.name,
-      type : 'simple'
+      userId : 0 // TODO: USE AUTHENTIFICATION SERIVCE
     };
 
     scope.loading = true;

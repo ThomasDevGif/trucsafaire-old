@@ -1,6 +1,4 @@
-.my-pointer {
-  cursor: pointer;
-}
+.my-pointer { cursor: pointer; }
 
 .my-container {
   margin-top: 20px;
@@ -13,13 +11,10 @@
   align-items: center;
 }
 
-.my-margin-bottom {
-  margin-bottom: 5px;
-}
-
-.my-margin-top {
-  margin-top: 5px;
-}
+.my-margin-bottom { margin-bottom: 5px; }
+.my-margin-top { margin-top: 5px; }
+.my-margin-right { margin-right: 5px; }
+.my-margin-left { margin-left: 5px; }
 
 .my-date-picker {
   display: flex;
@@ -30,6 +25,12 @@
 select:-moz-focusring {
   color: transparent;
   text-shadow: 0 0 0 #000;
+}
+
+.my-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 /*!

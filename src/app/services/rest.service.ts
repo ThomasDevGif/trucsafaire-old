@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { Item } from '../models/item';
 import { List } from '../models/list';
+import { User } from '../models/user';
 
 @Injectable()
 export class RestService {
@@ -72,11 +73,25 @@ export class RestService {
     .catch(this.handleError);
   }
 
+  // USER
+  createUser(user: User) : Promise<any> {
+    return this.http.post(this.baseUrl + 'user/createUser.php', user)
+    .toPromise()
+    .catch(this.handleError);
+  }
+
+  getUserByName(user: User) : Promise<User[]> {
+    return this.http.post(this.baseUrl + 'user/getUserByName.php', user)
+    .toPromise()
+    .then(res => res.json() as User[])
+    .catch(this.handleError);
+  }
+
   /**
    * Generic function to reject promise
    */
   private handleError(error: any): Promise<any> {
-    console.error('ERROR: ', error);
+    console.error('[ERROR] ', error);
     return Promise.reject(error.message || error);
   }
 
