@@ -1,0 +1,19 @@
+<div class="container my-container">
+  <h2>Authentification</h2>
+  <form name="form">
+    <div class="form-group">
+      <label for="name">Identifiant</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="user.name" required/>
+      <!-- <div *ngIf="f.submitted && !name.valid">Username is required</div> -->
+    </div>
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input type="password" class="form-control" name="password" [(ngModel)]="user.password" required/>
+      <!-- <div *ngIf="f.submitted && !password.valid">Password is required</div> -->
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary">Se connecter</button>
+      <button class="btn">S'inscrire</button>
+    </div>
+  </form>
+</div>

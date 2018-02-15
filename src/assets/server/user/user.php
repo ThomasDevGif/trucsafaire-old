@@ -1,9 +1,8 @@
 <?php
-class List {
+class User {
 	public $id;
 	public $name;
-	public $type;
-	public $userId;
+	public $password;
 
 	public function __construct() { }
 

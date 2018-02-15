@@ -19,6 +19,7 @@ import { AutofocusDirective } from './directives/autofocus.directive';
 import { ListComponent } from './components/list/list.component';
 import { MyGenericLoaderComponent } from './components/my-generic-loader/my-generic-loader.component';
 import { MyGenericModalConfirmComponent } from './components/my-generic-modal-confirm/my-generic-modal-confirm.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MyGenericModalConfirmComponent } from './components/my-generic-modal-co
     AutofocusDirective,
     ListComponent,
     MyGenericLoaderComponent,
-    MyGenericModalConfirmComponent
+    MyGenericModalConfirmComponent,
+    LoginComponent
   ],
   imports: [
     NgbModule.forRoot(),
