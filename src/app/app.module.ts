@@ -21,6 +21,7 @@ import { ListComponent } from './components/list/list.component';
 import { MyGenericLoaderComponent } from './components/my-generic-loader/my-generic-loader.component';
 import { MyGenericModalConfirmComponent } from './components/my-generic-modal-confirm/my-generic-modal-confirm.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LoginComponent } from './components/login/login.component';
     ListComponent,
     MyGenericLoaderComponent,
     MyGenericModalConfirmComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     NgbModule.forRoot(),

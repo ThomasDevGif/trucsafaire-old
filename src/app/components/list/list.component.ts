@@ -27,6 +27,7 @@ export class ListComponent implements OnInit {
     private router: Router
   ) { }
 
+  // If no logged user in local storage, redirect to login page
   ngOnInit() {
     this.loggedUser = this.authentificationService.getUser();
     if (undefined == this.loggedUser) {
@@ -36,6 +37,7 @@ export class ListComponent implements OnInit {
     }
   }
 
+  // Refresh tabs of lists
   refreshLists(changeTab) {
     let scope = this;
     scope.loading = true;

@@ -46,12 +46,12 @@ export class LoginComponent implements OnInit {
     scope.loading = true;
     scope.restService.getUserByLogin(scope.user)
     .then(function(resUser) {
+        scope.loading = false;
       if (resUser.length > 0) {
         scope.authentificationService.login(resUser[0]);
       } else {
         scope.displayWrongLogin = true;
       }
-      scope.loading = false;
     })
   }
 

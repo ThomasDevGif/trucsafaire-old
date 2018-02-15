@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   title = 'Trucs A Faire';
   items = [
     { name: 'Listes', link: '/' },
-    { name: 'Cuisine', link: '/' }
+    { name: 'Profil', link: '/profile' }
   ]
 
   constructor (
