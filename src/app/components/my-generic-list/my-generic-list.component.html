@@ -12,9 +12,11 @@
     </button>
   </div>
   <div>
-    <button type="button" class="btn btn-primary" (click)="addNewItem()">
-      <i *ngIf="!modeAddItem" class="fas fa-plus" aria-hidden="true"></i>
-      <i *ngIf="modeAddItem" class="fas fa-times" aria-hidden="true"></i>
+    <button *ngIf="!modeAddItem" type="button" class="btn btn-primary" (click)="addNewItem()">
+      <i class="fas fa-plus" aria-hidden="true"></i>
+    </button>
+    <button *ngIf="modeAddItem" type="button" class="btn btn-primary" (click)="addNewItem()">
+      <i class="fas fa-times" aria-hidden="true"></i>
     </button>
     <button dnd-droppable (onDropSuccess)="deleteItem($event)" type="button" class="btn btn-warning" oninvalid="" (click)="openModal(contentModal)">
       <i class="fas fa-trash" aria-hidden="true"></i>

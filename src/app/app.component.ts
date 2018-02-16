@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthentificationService } from './services/authentification.service';
 import { RestService } from './services/rest.service';
 import { User } from './models/user';
@@ -19,10 +20,15 @@ export class AppComponent implements OnInit {
   constructor (
     private restService: RestService,
     private authentificationService: AuthentificationService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.loggedUser = this.authentificationService.getUser();
+  }
+
+  isActive(link: string) : boolean {
+    return link == this.router.url;
   }
 
 }
