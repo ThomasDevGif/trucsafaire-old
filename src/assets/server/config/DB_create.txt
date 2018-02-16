@@ -20,3 +20,33 @@ CREATE TABLE user
   name VARCHAR(25) NOT NULL,
   password VARCHAR(25) NOT NULL
 );
+
+CREATE TABLE recipe
+(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(25) NOT NULL,
+  description VARCHAR(500) NOT NULL,
+  difficulty INTEGER NOT NULL,
+  date VARCHAR(10) NOT NULL,
+  userId INTEGER NOT NULL
+);
+
+CREATE TABLE ingredient
+(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(25) NOT NULL
+);
+
+CREATE TABLE recipeIngredient
+(
+  recipeId INTEGER NOT NULL,
+  ingredientId INTEGER NOT NULL,
+  quantity VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE userRecipe
+(
+  userId INTEGER NOT NULL,
+  recipeId INTEGER NOT NULL,
+  note INTEGER NOT NULL
+);
