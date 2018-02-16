@@ -16,6 +16,9 @@
     <div *ngIf="displayWrongLogin" class="alert alert-danger my-margin-top">
       Mauvais <strong>identifiant</strong> ou <strong>mot de passe</strong>.
     </div>
+    <div *ngIf="displaySuccessLogin" class="alert alert-success my-margin-top">
+      Le compte <strong>{{successLogin}}</strong> a été créé.
+    </div>
     <div class="form-group">
       <button [disabled]="!f.valid" class="btn btn-primary" (click)="login()">Se connecter</button>
       <button [disabled]="!f.valid" class="btn my-margin-left" (click)="register()">S'inscrire</button>

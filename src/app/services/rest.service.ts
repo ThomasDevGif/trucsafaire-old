@@ -94,6 +94,12 @@ export class RestService {
     .catch(this.handleError);
   }
 
+  updateUserPassword(user: User) : Promise<any> {
+    return this.http.post(this.baseUrl + 'user/updateUserPassword.php', user)
+    .toPromise()
+    .catch(this.handleError);
+  }
+
   /**
    * Generic function to reject promise
    */

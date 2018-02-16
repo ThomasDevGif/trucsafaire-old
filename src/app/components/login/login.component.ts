@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   loading: boolean = false;
   displayInputNameWarning: boolean = false;
   displayWrongLogin: boolean = false;
+  displaySuccessLogin: boolean = false;
+  successLogin: string;
   user: User = {
     id: null,
     name: null,
@@ -30,8 +32,10 @@ export class LoginComponent implements OnInit {
 
   /** Check if input are valid */
   checkInput() {
+    // Hide messages
     this.displayInputNameWarning = false;
     this.displayWrongLogin = false;
+    this.displaySuccessLogin = false;
 
     return !(null == this.user.name || this.user.name == ''
       || null == this.user.password || this.user.password == '');
@@ -72,6 +76,8 @@ export class LoginComponent implements OnInit {
       }
     })
     .then(function(resUser) {
+      scope.successLogin = scope.user.name;
+      scope.displaySuccessLogin = true;
       scope.resetForm();
       scope.loading = false;
     });

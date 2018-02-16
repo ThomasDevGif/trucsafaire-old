@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AuthentificationService } from './services/authentification.service';
 import { RestService } from './services/rest.service';
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { RestService } from './services/rest.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  loggedUser: User;
   title = 'Trucs A Faire';
   items = [
     { name: 'Listes', link: '/' },
@@ -15,10 +17,12 @@ export class AppComponent implements OnInit {
   ]
 
   constructor (
-    private restService: RestService
+    private restService: RestService,
+    private authentificationService: AuthentificationService,
   ) { }
 
   ngOnInit() {
+    this.loggedUser = this.authentificationService.getUser();
   }
 
 }

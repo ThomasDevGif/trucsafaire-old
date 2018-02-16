@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
 
   // Variables
   loggedUser: User;
+  loading: boolean = false;
 
   constructor(
     private restService: RestService,
@@ -28,8 +29,20 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  /** Delete user from local storage */
   logout() {
     this.authentificationService.logout();
+  }
+
+  /** Change user password */
+  updatePassword() {
+    let scope = this;
+    scope.loading = true;
+    scope.restService.updateUserPassword(scope.loggedUser)
+    .then(function(res) {
+      scope.authentificationService.login(scope.loggedUser);
+      scope.loading = false;
+    });
   }
 
 }
