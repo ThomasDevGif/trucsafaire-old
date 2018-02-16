@@ -18,7 +18,7 @@ export class MyGenericItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  action() {
+  checkItem() {
     let scope = this;
     scope.loading = true;
     scope.item.done = !scope.item.done;

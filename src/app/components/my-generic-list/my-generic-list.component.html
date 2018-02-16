@@ -1,23 +1,23 @@
 <!-- Admin layout -->
-<div class="my-card-admin my-margin-top">
+<div class="my-row-between my-margin-top">
   <div>
     <button type="button" class="btn btn-primary" (click)="refreshItems()">
-      <i class="fa fa-refresh" aria-hidden="true"></i>
+      <i class="fas fa-sync" aria-hidden="true"></i>
     </button>
     <button type="button" class="btn btn-info" (click)="setListGridOption('col-md-6')">
-      <i class="fa fa-th-large" aria-hidden="true"></i>
+      <i class="fas fa-th-large" aria-hidden="true"></i>
     </button>
     <button type="button" class="btn btn-info" (click)="setListGridOption('col-md-4')">
-      <i class="fa fa-th" aria-hidden="true"></i>
+      <i class="fas fa-th" aria-hidden="true"></i>
     </button>
   </div>
   <div>
     <button type="button" class="btn btn-primary" (click)="addNewItem()">
-      <i *ngIf="!modeAddItem" class="fa fa-plus" aria-hidden="true"></i>
-      <i *ngIf="modeAddItem" class="fa fa-times" aria-hidden="true"></i>
+      <i *ngIf="!modeAddItem" class="fas fa-plus" aria-hidden="true"></i>
+      <i *ngIf="modeAddItem" class="fas fa-times" aria-hidden="true"></i>
     </button>
     <button dnd-droppable (onDropSuccess)="deleteItem($event)" type="button" class="btn btn-warning" oninvalid="" (click)="openModal(contentModal)">
-      <i class="fa fa-trash" aria-hidden="true"></i>
+      <i class="fas fa-trash" aria-hidden="true"></i>
     </button>
   </div>
 </div>

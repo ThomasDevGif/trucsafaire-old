@@ -11,10 +11,20 @@
   align-items: center;
 }
 
+.my-margin {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
 .my-margin-bottom { margin-bottom: 5px; }
 .my-margin-top { margin-top: 5px; }
 .my-margin-right { margin-right: 5px; }
 .my-margin-left { margin-left: 5px; }
+
+.white { color: #fff; }
+
+.my-bg-grey { background-color: #E0E0E0;}
 
 .my-date-picker {
   display: flex;
