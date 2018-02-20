@@ -22,4 +22,6 @@
 
 <!-- If no lists -->
 <my-generic-list-create *ngIf="!lists" (refreshDataEvent)="refreshLists($event)"></my-generic-list-create>
+
+<div class="my-center">Ajoutée par {{loggedUser.name}}.</div>
 </div>

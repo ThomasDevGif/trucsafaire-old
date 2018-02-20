@@ -13,8 +13,8 @@ export class AppComponent implements OnInit {
   loggedUser: User;
   title = 'Trucs A Faire';
   items = [
-    { name: 'Listes', icon: 'fas fa-list-ul', link: '/' },
-    { name: 'Profil', icon: 'fas fa-user', link: '/profile' }
+    { name: 'Profil', icon: 'fas fa-user', link: '/profile' },
+    { name: 'Listes', icon: 'fas fa-list-ul', link: '/' }
   ]
 
   constructor (

@@ -1,14 +1,27 @@
-<div class="card my-card-item my-pointer my-margin-bottom">
-  <div class="my-margin my-row-between">
-    <div class="my-row-between">
-      <i *ngIf="!item.done" class="far fa-circle" aria-hidden="true"></i>
-      <i *ngIf="item.done" class="far fa-check-circle" aria-hidden="true"></i>
-      <div (click)="checkItem()" style="margin-left: 10px;">{{item.name}}</div>
+<div class="card my-card-item my-margin-bottom">
+  <div class="my-margin">
+    <div class="my-pointer row">
+      <div class="col-10 my-row" (click)="checkItem()" [ngClass]="{'my-text-done': item.done}">
+        <i *ngIf="!item.done" class="far fa-circle my-icon-not-done" aria-hidden="true"></i>
+        <i *ngIf="item.done" class="far fa-check-circle my-icon-done" aria-hidden="true"></i>
+        <div style="margin-left: 10px;">{{item.name}}</div>
+      </div>
+      <div class="col-2 my-center">
+        <div (click)="openModal(contentModal)"><i class="fas fa-times my-cross" aria-hidden="true"></i></div>
+      </div>
     </div>
-    <div>
-      <i class="fas fa-pencil-alt" aria-hidden="true"></i>
-      <i class="fas fa-trash my-margin-left" aria-hidden="true"></i>
-    </div>
-    <!-- <div *ngIf="loading" class="loader"></div> -->
   </div>
 </div>
+
+<!-- <div *ngIf="loading" class="loader"></div> -->
+
+<!-- Modal -->
+<ng-template #contentModal let-c="close" let-d="dismiss">
+  <div class="modal-body my-text">
+    <p>Supprimer ?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="c('delete')">Oui</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('cancel')">Non</button>
+  </div>
+</ng-template>

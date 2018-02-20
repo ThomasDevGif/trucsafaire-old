@@ -8,6 +8,22 @@
   height: 20px;
 }
 
-.my-card-item {
-  font-size: 20px;
+.my-card-item { font-size: 20px; }
+
+.my-flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
+
+.my-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-cross { color: #BDBDBD; }
+
+.my-text-done { text-decoration:line-through; }
+.my-icon-done { color: #4CAF50;}
+.my-icon-not-done { color: #03A9F4;}

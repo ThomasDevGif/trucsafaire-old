@@ -68,18 +68,7 @@ export class MyGenericListComponent implements OnInit {
     scope.loading = true;
     scope.restService.createItem(item)
     .then(function() {
-      scope.refreshItems();
-    });
-  }
-
-  /** Delete an item */
-  deleteItem($event : any) {
-    var item = $event.dragData;
-    let scope = this;
-    scope.loading = true;
-    scope.restService.deleteItem(item)
-    .then(function(res) {
-      scope.refreshItems();
+      return scope.refreshItems();
     });
   }
 
@@ -94,6 +83,16 @@ export class MyGenericListComponent implements OnInit {
     .then(function() {
       scope.loading = false;
       scope.refreshDataEvent.next();
+    });
+  }
+
+  deleteItemFromParent($event) {
+    var item = $event;
+    let scope = this;
+    scope.loading = true;
+    scope.restService.deleteItem(item)
+    .then(function(res) {
+      return scope.refreshItems();
     });
   }
 

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Item } from '../../models/item';
 import { RestService } from '../../services/rest.service';
@@ -12,8 +13,13 @@ export class MyGenericItemComponent implements OnInit {
 
   @Input() item: Item;
   loading: boolean = false;
+  // Emitter to use function from parent
+  @Output() deleteItemFromParent = new EventEmitter<Object>();
 
-  constructor(private restService: RestService) { }
+  constructor(
+    private restService: RestService,
+    private modalService: NgbModal,
+  ) { }
 
   ngOnInit() {
   }
@@ -26,5 +32,23 @@ export class MyGenericItemComponent implements OnInit {
       scope.loading = false;
     });
   }
+
+  /** Delete an item */
+  deleteItemFromChild() {
+    this.deleteItemFromParent.next(this.item);
+  }
+
+  /** Open modal dialog */
+  openModal(content) {
+    let scope = this;
+    scope.modalService.open(content).result.then(function(result) {
+      if (result == 'delete') {
+        scope.deleteItemFromChild();
+      }
+    }, (reason) => {
+      // Do nothing on esc click
+    });
+  }
+
 
 }
