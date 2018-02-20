@@ -94,6 +94,13 @@ export class RestService {
     .catch(this.handleError);
   }
 
+  getUsers() : Promise<User[]> {
+    return this.http.get(this.baseUrl + 'user/getUsers.php')
+    .toPromise()
+    .then(res => res.json() as User[])
+    .catch(this.handleError);
+  }
+
   updateUserPassword(user: User) : Promise<any> {
     return this.http.post(this.baseUrl + 'user/updateUserPassword.php', user)
     .toPromise()

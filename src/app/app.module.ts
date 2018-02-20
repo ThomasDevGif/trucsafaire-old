@@ -7,6 +7,7 @@ import { FormsModule }   from '@angular/forms'
 import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { DndModule } from 'ng2-dnd';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { RestService } from './services/rest.service';
 import { AuthentificationService } from './services/authentification.service';
@@ -45,7 +46,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     HttpModule,
     FormsModule,
     DndModule.forRoot(),
-    ShowHidePasswordModule.forRoot()
+    ShowHidePasswordModule.forRoot(),
+    NgSelectModule
   ],
   providers: [
     RestService,

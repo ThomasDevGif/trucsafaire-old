@@ -1,9 +1,6 @@
 <!-- Admin layout -->
 <div class="my-row-between my-margin-top">
-  <div>
-    <button type="button" class="btn btn-primary" (click)="refreshItems()">
-      <i class="fas fa-sync" aria-hidden="true"></i>
-    </button>
+  <div class="my-col-mobile">
     <button type="button" class="btn btn-info" (click)="setListGridOption('col-md-6')">
       <i class="fas fa-th-large" aria-hidden="true"></i>
     </button>
@@ -11,12 +8,20 @@
       <i class="fas fa-th" aria-hidden="true"></i>
     </button>
   </div>
-  <div>
+  <div class="my-col-mobile">
+    <button type="button" class="btn btn-primary" (click)="refreshItems()">
+      <i class="fas fa-sync" aria-hidden="true"></i>
+    </button>
     <button *ngIf="!modeAddItem" type="button" class="btn btn-primary" (click)="addNewItem()">
       <i class="fas fa-plus" aria-hidden="true"></i>
     </button>
     <button *ngIf="modeAddItem" type="button" class="btn btn-primary" (click)="addNewItem()">
       <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="my-col-mobile">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalShare">
+      <i class="fas fa-share-alt"></i>
     </button>
     <button type="button" class="btn btn-warning" oninvalid="" (click)="openModal(contentModal)">
       <i class="fas fa-trash" aria-hidden="true"></i>
@@ -49,7 +54,7 @@
   </ul>
 </div>
 
-<!-- Modal -->
+<!-- Modal confirm -->
 <ng-template #contentModal let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title">Confirmation</h4>
@@ -65,3 +70,31 @@
     <button type="button" class="btn btn-outline-dark" (click)="c('cancel')">Annuler</button>
   </div>
 </ng-template>
+
+<!-- Modal share -->
+<div class="modal fade" id="modalShare" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-share-alt"></i>Partager la liste</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ng-select [items]="tests"
+                   [dropdownPosition]="'auto'"
+                   bindLabel="name"
+                   bindValue="name"
+                   placeholder="Ajouter une personne"
+                   notFoundText="Aucun utilisateur trouvé"
+                   [(ngModel)]="selectedPersonId">
+        </ng-select>
+        <br/><p>{{selectedPersonId}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
