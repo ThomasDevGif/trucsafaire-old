@@ -72,11 +72,14 @@ export class MyGenericListComponent implements OnInit {
     });
   }
 
-  /** Delete an list and associated items */
+  /** Delete an list, sharedList data and associated items */
   deleteList() {
     let scope = this;
     scope.loading = true;
-    scope.restService.deleteItemsByList(scope.list)
+    scope.restService.deleteSharedListByList(scope.list)
+    .then(function() {
+      return scope.restService.deleteItemsByList(scope.list);
+    })
     .then(function() {
       return scope.restService.deleteList(scope.list);
     })

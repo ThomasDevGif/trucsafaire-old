@@ -115,8 +115,14 @@ export class RestService {
     .catch(this.handleError);
   }
 
-  getSharedUsers(list: List) : Promise<any> {
-    return this.http.post(this.baseUrl + 'sharedList/getSharedUsers.php', list)
+  getSharedUsersByList(list: List) : Promise<any> {
+    return this.http.post(this.baseUrl + 'sharedList/getSharedUsersByList.php', list.id)
+    .toPromise()
+    .catch(this.handleError);
+  }
+
+  deleteSharedListByList(list: List) : Promise<any> {
+    return this.http.post(this.baseUrl + 'sharedList/deleteSharedListByList.php', list.id)
     .toPromise()
     .catch(this.handleError);
   }
