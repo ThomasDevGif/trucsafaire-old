@@ -22,9 +22,9 @@ import { MyGenericListCreateComponent } from './components/my-generic-list-creat
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { ListComponent } from './components/list/list.component';
 import { MyGenericLoaderComponent } from './components/my-generic-loader/my-generic-loader.component';
-import { MyGenericModalConfirmComponent } from './components/my-generic-modal-confirm/my-generic-modal-confirm.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MyGenericModalShareComponent } from './components/my-generic-modal-share/my-generic-modal-share.component';
 
 @NgModule({
   declarations: [
@@ -35,9 +35,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     AutofocusDirective,
     ListComponent,
     MyGenericLoaderComponent,
-    MyGenericModalConfirmComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    MyGenericModalShareComponent
   ],
   imports: [
     NgbModule.forRoot(),

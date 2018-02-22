@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Item } from '../models/item';
 import { List } from '../models/list';
 import { User } from '../models/user';
+import { SharedList } from '../models/sharedList';
 
 @Injectable()
 export class RestService {
@@ -106,6 +107,20 @@ export class RestService {
     .toPromise()
     .catch(this.handleError);
   }
+
+  // sharedList
+  createSharedList(shareList: SharedList) : Promise<any> {
+    return this.http.post(this.baseUrl + 'sharedList/createSharedList.php', shareList)
+    .toPromise()
+    .catch(this.handleError);
+  }
+
+  getSharedUsers(list: List) : Promise<any> {
+    return this.http.post(this.baseUrl + 'sharedList/getSharedUsers.php', list)
+    .toPromise()
+    .catch(this.handleError);
+  }
+
 
   /**
    * Generic function to reject promise

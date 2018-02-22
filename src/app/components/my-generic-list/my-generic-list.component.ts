@@ -23,24 +23,6 @@ export class MyGenericListComponent implements OnInit {
   // Settings
   listGridOption: string;
 
-  // Share
-  // TODO
-  tests = [
-    {
-      id: 1,
-      name: 'Thomas'
-    },
-    {
-      id: 2,
-      name: 'Autre'
-    },
-    {
-      id: 3,
-      name: 'Test'
-    }
-  ]
-  selectedPersonId;
-
   // Data
   loading: boolean;
   items: Item[];
