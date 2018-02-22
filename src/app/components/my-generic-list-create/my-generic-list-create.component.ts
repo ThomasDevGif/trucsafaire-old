@@ -43,9 +43,8 @@ export class MyGenericListCreateComponent implements OnInit {
     scope.loading = true;
     scope.restService.createList(list)
     .then(function(res) {
-      console.log(res);
       scope.loading = false;
-      scope.refreshDataEvent.next(scope.name);
+      scope.refreshDataEvent.next();
       scope.name = '';
     });
   }

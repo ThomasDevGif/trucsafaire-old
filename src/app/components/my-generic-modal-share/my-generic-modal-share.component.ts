@@ -34,8 +34,7 @@ export class MyGenericModalShareComponent implements OnInit {
       return self.restService.getSharedUsersByList(self.list)
     })
     .then(function(resSharedUsers) {
-      console.log(resSharedUsers._body);
-      self.sharedUsers = resSharedUsers._body;
+      self.sharedUsers = resSharedUsers;
       self.loading = false;
     });
   }

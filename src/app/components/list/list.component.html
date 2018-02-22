@@ -8,6 +8,12 @@
     </ng-template>
   </ngb-tab>
 
+  <ngb-tab *ngFor="let sharedList of sharedLists" title="{{sharedList.name}} (shared)" id="{{sharedList.name}}">
+    <ng-template ngbTabContent>
+      <my-generic-list *ngIf="!loading" [list]="sharedList" (refreshDataEvent)="refreshLists($event)"></my-generic-list>
+    </ng-template>
+  </ngb-tab>
+
   <!-- Tab add -->
   <ngb-tab>
     <ng-template ngbTabTitle>

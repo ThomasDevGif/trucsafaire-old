@@ -6,7 +6,7 @@ $db = $database->getConnection();
 
 // Get posted data
 $data = json_decode(file_get_contents("php://input"));
-$listId = $data;
+$userId = $data;
 
 // Execute query
 $sql = "SELECT *
@@ -14,11 +14,11 @@ $sql = "SELECT *
         WHERE id IN (
           SELECT listId
           FROM sharedList
-          WHERE listId = :listId
+          WHERE userId = :userId
         )";
 
 $stmt = $db->prepare($sql);
-$stmt->bindParam(':listId', $listId);
+$stmt->bindParam(':userId', $userId);
 $stmt->execute();
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $json = json_encode($results);

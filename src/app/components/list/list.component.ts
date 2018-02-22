@@ -18,6 +18,7 @@ export class ListComponent implements OnInit {
   @ViewChild('tabLists') tabLists;
   loading: boolean;
   lists: List[];
+  sharedLists: List[];
   loggedUser: User;
 
   constructor(
@@ -33,22 +34,22 @@ export class ListComponent implements OnInit {
     if (undefined == this.loggedUser) {
       this.router.navigate(['/login'])
     } else {
-      this.refreshLists(null);
+      this.refreshLists();
     }
   }
 
   // Refresh tabs of lists
-  refreshLists(changeTab) {
+  refreshLists() {
     let scope = this;
     scope.loading = true;
     scope.restService.getListsByUser(scope.loggedUser)
     .then(function(resLists) {
       scope.lists = resLists;
+      return scope.restService.getSharedListsByUser(scope.loggedUser);
+    })
+    .then(function(resSharedLists) {
+      scope.sharedLists = resSharedLists;
       scope.loading = false;
-      if (null != changeTab) {
-        // TODO: select created list
-        // scope.tabLists.select(changeTab);
-      }
     });
   }
 

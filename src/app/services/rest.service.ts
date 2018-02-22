@@ -118,6 +118,14 @@ export class RestService {
   getSharedUsersByList(list: List) : Promise<any> {
     return this.http.post(this.baseUrl + 'sharedList/getSharedUsersByList.php', list.id)
     .toPromise()
+    .then(res => res.json() as User[])
+    .catch(this.handleError);
+  }
+
+  getSharedListsByUser(user: User) : Promise<any> {
+    return this.http.post(this.baseUrl + 'sharedList/getSharedListsByUser.php', user.id)
+    .toPromise()
+    .then(res => res.json() as List[])
     .catch(this.handleError);
   }
 

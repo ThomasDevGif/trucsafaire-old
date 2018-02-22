@@ -1,6 +1,7 @@
 <?php
 // Get database connection
 include_once '../config/database.php';
+
 $database = new Database();
 $db = $database->getConnection();
 
@@ -9,12 +10,7 @@ $data = json_decode(file_get_contents("php://input"));
 $listId = $data;
 
 // Execute query
-$sql = "DELETE FROM sharedList WHERE listId = :listId";
-$stmt = $db->prepare($sql);
+$stmt=$db->prepare("DELETE FROM sharedList WHERE listId = :listId");
 $stmt->bindParam(':listId', $listId);
 $stmt->execute();
-$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$json = json_encode($results);
-echo $json;
-
 ?>
