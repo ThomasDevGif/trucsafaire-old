@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
 import { RestService } from '../../services/rest.service';
 import { List } from '../../models/list';
 import { User } from '../../models/user';
 import { SharedList } from '../../models/sharedList';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'my-generic-modal-share',
@@ -18,8 +19,12 @@ export class MyGenericModalShareComponent implements OnInit {
   selectedUsersId = null;
 
   constructor(
-    private restService: RestService
-  ) { }
+    private restService: RestService,
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef
+  ) {
+    this.toastr.setRootViewContainerRef(vcr);
+  }
 
   ngOnInit() {
     this.init();
@@ -49,10 +54,15 @@ export class MyGenericModalShareComponent implements OnInit {
       }
       this.restService.createSharedList(sharedList)
       .then(function() {
-        console.log('shared!');
-        self.loading = false;
+        self.showSuccess();
+        return self.init();
       })
     }
+  }
+
+  // TODO repare or remove
+  showSuccess() {
+    this.toastr.success('Shared', 'Success!');
   }
 
 }

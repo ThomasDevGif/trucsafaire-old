@@ -4,7 +4,7 @@
   <form name="form" #f="ngForm" novalidate>
     <div class="form-group">
       <label for="name">Identifiant</label>
-      <input type="text" class="form-control" name="name" [(ngModel)]="user.name" #name="ngModel" required/>
+      <input myAutofocus type="text" class="form-control" name="name" [(ngModel)]="user.name" #name="ngModel" required/>
       <div *ngIf="displayInputNameWarning" class="alert alert-warning my-margin-top">
         L'<strong>identifiant</strong> est déjà utilisé.
       </div>

@@ -28,6 +28,7 @@
     "core-js": "^2.4.1",
     "moment": "^2.19.3",
     "ng2-dnd": "^5.0.2",
+    "ng2-toastr": "^4.1.2",
     "ngx-show-hide-password": "^1.2.4",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"

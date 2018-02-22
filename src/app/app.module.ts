@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule }   from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -8,6 +9,7 @@ import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { DndModule } from 'ng2-dnd';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { RestService } from './services/rest.service';
 import { AuthentificationService } from './services/authentification.service';
@@ -42,12 +44,14 @@ import { MyGenericModalShareComponent } from './components/my-generic-modal-shar
   imports: [
     NgbModule.forRoot(),
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpModule,
     FormsModule,
     DndModule.forRoot(),
     ShowHidePasswordModule.forRoot(),
-    NgSelectModule
+    NgSelectModule,
+    ToastModule.forRoot()
   ],
   providers: [
     RestService,
