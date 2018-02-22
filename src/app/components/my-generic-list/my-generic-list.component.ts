@@ -27,6 +27,7 @@ export class MyGenericListComponent implements OnInit {
   loading: boolean;
   items: Item[];
   @Input() list: List;
+  @Input() isAdmin: boolean;
 
   // Emitter to get data from parent
   @Output() refreshDataEvent = new EventEmitter<Object>();
