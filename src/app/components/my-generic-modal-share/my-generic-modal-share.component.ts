@@ -52,12 +52,21 @@ export class MyGenericModalShareComponent implements OnInit {
         listId: self.list.id,
         userId: self.selectedUsersId
       }
-      this.restService.createSharedList(sharedList)
+      self.restService.createSharedList(sharedList)
       .then(function() {
         self.showSuccess();
         return self.init();
       })
     }
+  }
+
+  deleteSharedUserByList(sharedUser: User) {
+    let self = this;
+    self.loading = true;
+    self.restService.deleteSharedUserByList(sharedUser, self.list)
+    .then(function() {
+      return self.init();
+    })
   }
 
   // TODO repare or remove

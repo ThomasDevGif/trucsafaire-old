@@ -12,25 +12,35 @@
     <div class="modal-body">
       <div *ngIf="loading">Chargement...</div>
       <div *ngIf="!loading">
-        <div class="my-row-between">
-          <ng-select [items]="users"
-                     [dropdownPosition]="'auto'"
-                     bindLabel="name"
-                     bindValue="id"
-                     placeholder="Ajouter une personne"
-                     notFoundText="Aucun utilisateur trouvé"
-                     [(ngModel)]="selectedUsersId">
-          </ng-select>
+        <ng-select [items]="users"
+        [dropdownPosition]="'auto'"
+        bindLabel="name"
+        bindValue="id"
+        placeholder="Trouver quelqu'un..."
+        notFoundText="Aucun utilisateur trouvé"
+        [(ngModel)]="selectedUsersId">
+      </ng-select>
+      <div class="my-row-between">
+        <div>{{sharedUsers.length}} partage(s).</div>
+        <div>
           <button type="button" class="btn btn-success my-margin-top" [disabled]="!selectedUsersId" (click)="shareList()">
             <i class="fas fa-share-alt"></i>
-            <span class="my-margin-left">Valider</span>
+            <span class="my-margin-left">Ajouter</span>
           </button>
         </div>
-        <p>{{sharedUsers.length}}</p>
       </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Fermer</button>
+      <ul class="list-group my-margin-top">
+        <li *ngFor="let sharedUser of sharedUsers" class="list-group-item d-flex justify-content-between align-items-center">
+          <div><i class="fas fa-user"></i><span class="my-margin-left">{{sharedUser.name}}</span></div>
+          <span class="my-pointer" (click)="deleteSharedUserByList(sharedUser)">
+            <i class="fas fa-times"></i>
+          </span>
+        </li>
+      </ul>
     </div>
   </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Fermer</button>
+  </div>
+</div>
 </div>

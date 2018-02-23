@@ -10,9 +10,9 @@ $listId = $data;
 
 // Execute query
 $sql = "SELECT *
-        FROM list
+        FROM user
         WHERE id IN (
-          SELECT listId
+          SELECT userId
           FROM sharedList
           WHERE listId = :listId
         )";

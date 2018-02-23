@@ -135,6 +135,14 @@ export class RestService {
     .catch(this.handleError);
   }
 
+  deleteSharedUserByList(user: User, list: List) : Promise<any> {
+    return this.http.post(this.baseUrl + 'sharedList/deleteSharedUserByList.php', {
+      userId: user.id,
+      listId: list.id
+    })
+    .toPromise()
+    .catch(this.handleError);
+  }
 
   /**
    * Generic function to reject promise
