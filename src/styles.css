@@ -1,5 +1,11 @@
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
+@media screen and (max-width: 500px) {
+    .my-hide-mobile {
+        display: none;
+    }
+}
+
 .my-pointer { cursor: pointer; }
 
 .my-text {
@@ -29,7 +35,7 @@
 .my-margin-left { margin-left: 5px; }
 
 .white { color: #fff; }
-.my-bg-grey { background-color: #E0E0E0;}
+.my-bg-grey { background-color: #EEEEEE;}
 
 .my-date-picker {
   display: flex;
