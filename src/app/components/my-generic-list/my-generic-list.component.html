@@ -1,14 +1,14 @@
 <!-- Admin layout -->
 <div class="my-row-between my-margin-top">
-  <div class="my-col-mobile">
-    <button type="button" class="btn btn-info my-hide-mobile" (click)="setListGridOption('col-md-6')">
+  <div class="my-hide-mobile">
+    <button type="button" class="btn btn-info" (click)="setListGridOption('col-md-6')">
       <i class="fas fa-th-large" aria-hidden="true"></i>
     </button>
-    <button type="button" class="btn btn-info my-hide-mobile" (click)="setListGridOption('col-md-4')">
+    <button type="button" class="btn btn-info" (click)="setListGridOption('col-md-4')">
       <i class="fas fa-th" aria-hidden="true"></i>
     </button>
   </div>
-  <div class="my-col-mobile">
+  <div>
     <button type="button" class="btn btn-primary" (click)="refreshItems()">
       <i class="fas fa-sync" aria-hidden="true"></i>
     </button>
@@ -19,7 +19,7 @@
       <i class="fas fa-times" aria-hidden="true"></i>
     </button>
   </div>
-  <div *ngIf="isAdmin" class="my-col-mobile">
+  <div *ngIf="isAdmin">
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalShare">
       <i class="fas fa-share-alt"></i>
     </button>
