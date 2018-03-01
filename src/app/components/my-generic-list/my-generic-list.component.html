@@ -1,3 +1,4 @@
+<my-generic-loader *ngIf="loading"></my-generic-loader>
 <!-- Admin layout -->
 <div class="my-row-between my-margin-top">
   <div class="my-hide-mobile">
@@ -28,31 +29,28 @@
     </button>
   </div>
 </div>
-<my-generic-loader *ngIf="loading" style="margin-top: 20px;"></my-generic-loader>
-<div *ngIf="!loading">
-  <!-- List -->
-  <ul class="list-group my-margin-top">
-    <li class="list-group-item active">A faire ({{filterItems(false).length}})</li>
-    <li class="list-group-item my-bg-grey">
-      <div class="row">
-        <div [ngClass]="listGridOption" *ngFor="let item of filterItems(false); let i = index" dnd-draggable [dragEnabled]="true" [dragData]="item">
-          <my-generic-item [item]="item" (deleteItemFromParent)="deleteItemFromParent($event)"></my-generic-item>
-        </div>
+<!-- List -->
+<ul class="list-group my-margin-top">
+  <li class="list-group-item active">A faire ({{filterItems(false).length}})</li>
+  <li class="list-group-item my-bg-grey">
+    <div *ngIf="!loading" class="row">
+      <div [ngClass]="listGridOption" *ngFor="let item of filterItems(false); let i = index" dnd-draggable [dragEnabled]="true" [dragData]="item">
+        <my-generic-item [item]="item" (deleteItemFromParent)="deleteItemFromParent($event)"></my-generic-item>
       </div>
-      <input style="margin-top: 20px;" myAutofocus *ngIf="modeAddItem" type="text" class="form-control" placeholder="Item" (keydown)="handleKeyDown($event)" [(ngModel)]="inputNewItemName">
-    </li>
-  </ul>
-  <ul class="list-group my-margin-top">
-    <li class="list-group-item active">Faits ({{filterItems(true).length}})</li>
-    <li class="list-group-item my-bg-grey">
-      <div class="row">
-        <div [ngClass]="listGridOption" *ngFor="let item of filterItems(true); let i = index" dnd-draggable [dragEnabled]="true" [dragData]="item">
-          <my-generic-item [item]="item" (deleteItemFromParent)="deleteItemFromParent($event)"></my-generic-item>
-        </div>
+    </div>
+    <input style="margin-top: 20px;" myAutofocus *ngIf="modeAddItem" type="text" class="form-control" placeholder="Item" (keydown)="handleKeyDown($event)" [(ngModel)]="inputNewItemName">
+  </li>
+</ul>
+<ul class="list-group my-margin-top">
+  <li class="list-group-item active">Faits ({{filterItems(true).length}})</li>
+  <li class="list-group-item my-bg-grey">
+    <div *ngIf="!loading" class="row">
+      <div [ngClass]="listGridOption" *ngFor="let item of filterItems(true); let i = index" dnd-draggable [dragEnabled]="true" [dragData]="item">
+        <my-generic-item [item]="item" (deleteItemFromParent)="deleteItemFromParent($event)"></my-generic-item>
       </div>
-    </li>
-  </ul>
-</div>
+    </div>
+  </li>
+</ul>
 
 <!-- Modal confirm -->
 <ng-template #contentModal let-c="close" let-d="dismiss">

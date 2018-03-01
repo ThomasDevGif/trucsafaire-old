@@ -3,7 +3,6 @@ import { RestService } from '../../services/rest.service';
 import { List } from '../../models/list';
 import { User } from '../../models/user';
 import { SharedList } from '../../models/sharedList';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'my-generic-modal-share',
@@ -19,12 +18,8 @@ export class MyGenericModalShareComponent implements OnInit {
   selectedUsersId = null;
 
   constructor(
-    private restService: RestService,
-    public toastr: ToastsManager,
-    vcr: ViewContainerRef
-  ) {
-    this.toastr.setRootViewContainerRef(vcr);
-  }
+    private restService: RestService
+  ) { }
 
   ngOnInit() {
     this.init();
@@ -54,7 +49,6 @@ export class MyGenericModalShareComponent implements OnInit {
       }
       self.restService.createSharedList(sharedList)
       .then(function() {
-        self.showSuccess();
         return self.init();
       })
     }
@@ -67,11 +61,6 @@ export class MyGenericModalShareComponent implements OnInit {
     .then(function() {
       return self.init();
     })
-  }
-
-  // TODO repare or remove
-  showSuccess() {
-    this.toastr.success('Shared', 'Success!');
   }
 
 }
