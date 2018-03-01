@@ -1,4 +1,5 @@
 @import "~@ng-select/ng-select/themes/default.theme.css";
+@import "./assets/css/loading.css";
 
 @media screen and (max-width: 500px) {
     .my-hide-mobile {
@@ -65,7 +66,6 @@ select:-moz-focusring {
   width: 100%;
   display: block;
 }
-
 
 /*!
  * Bootswatch v4.0.0-beta.3
