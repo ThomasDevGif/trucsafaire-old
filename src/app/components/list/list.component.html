@@ -1,5 +1,5 @@
+<my-generic-loader *ngIf="loading"></my-generic-loader>
 <div class="container my-container">
-  <my-generic-loader *ngIf="loading"></my-generic-loader>
   <ngb-tabset *ngIf="lists" #tabLists="ngbTabset">
   <!-- Tabs lists -->
   <ngb-tab *ngFor="let list of lists" title="{{list.name}}" id="{{list.name}}">

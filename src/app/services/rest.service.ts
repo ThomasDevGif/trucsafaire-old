@@ -6,6 +6,7 @@ import { Item } from '../models/item';
 import { List } from '../models/list';
 import { User } from '../models/user';
 import { SharedList } from '../models/sharedList';
+import { Ingredient } from '../models/ingredient';
 
 @Injectable()
 export class RestService {
@@ -140,6 +141,32 @@ export class RestService {
       userId: user.id,
       listId: list.id
     })
+    .toPromise()
+    .catch(this.handleError);
+  }
+
+  // Ingredient
+  createIngredient(ingredient: Ingredient) : Promise<any> {
+    return this.http.post(this.baseUrl + 'ingredient/createIngredient.php', ingredient)
+    .toPromise()
+    .catch(this.handleError);
+  }
+
+  getIngredients() : Promise<any> {
+    return this.http.get(this.baseUrl + 'ingredient/getIngredients.php')
+    .toPromise()
+    .then(res => res.json() as Ingredient[])
+    .catch(this.handleError);
+  }
+
+  updateIngredient(ingredient: Ingredient) : Promise<any> {
+    return this.http.post(this.baseUrl + 'ingredient/updateIngredient.php', ingredient)
+    .toPromise()
+    .catch(this.handleError);
+  }
+
+  deleteIngredient(ingredient: Ingredient) : Promise<any> {
+    return this.http.post(this.baseUrl + 'ingredient/updateIngredient.php', ingredient.id)
     .toPromise()
     .catch(this.handleError);
   }

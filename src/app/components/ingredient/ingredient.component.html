@@ -1,3 +1,19 @@
-<p>
-  ingredient works!
-</p>
+<my-generic-loader *ngIf="loading"></my-generic-loader>
+<div class="container my-container">
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Ingredient</th>
+      <th scope="col">Options</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ingredient of ingredients">
+      <th scope="row" class="row">{{ingredient.name}}</th>
+      <td><div class="my-pointer"><i class="fas fa-pencil-alt my-primary"></i></div></td>
+      <td><div class="my-pointer"><i class="fas fa-trash my-warning"></i></div></td>
+    </tr>
+  </tbody>
+</table>
+</div>
