@@ -12,8 +12,18 @@
     <tr *ngFor="let ingredient of ingredients">
       <th scope="row" class="row">{{ingredient.name}}</th>
       <td><div class="my-pointer"><i class="fas fa-pencil-alt my-primary"></i></div></td>
-      <td><div class="my-pointer"><i class="fas fa-trash my-warning"></i></div></td>
+      <td><div class="my-pointer" (click)="openModal(contentModal, ingredient)"><i class="fas fa-trash my-warning"></i></div></td>
     </tr>
   </tbody>
 </table>
 </div>
+<!-- Modal -->
+<ng-template #contentModal let-c="close" let-d="dismiss">
+  <div class="modal-body my-text">
+    <p>Supprimer ?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="c('delete')">Oui</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('cancel')">Non</button>
+  </div>
+</ng-template>

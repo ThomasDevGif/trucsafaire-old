@@ -166,7 +166,7 @@ export class RestService {
   }
 
   deleteIngredient(ingredient: Ingredient) : Promise<any> {
-    return this.http.post(this.baseUrl + 'ingredient/updateIngredient.php', ingredient.id)
+    return this.http.post(this.baseUrl + 'ingredient/deleteIngredient.php', ingredient.id)
     .toPromise()
     .catch(this.handleError);
   }

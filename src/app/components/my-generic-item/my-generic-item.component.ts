@@ -18,7 +18,7 @@ export class MyGenericItemComponent implements OnInit {
 
   constructor(
     private restService: RestService,
-    private modalService: NgbModal,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
