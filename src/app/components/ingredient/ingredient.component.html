@@ -1,5 +1,21 @@
 <my-generic-loader *ngIf="loading"></my-generic-loader>
 <div class="container my-container">
+  <form>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="form-group">
+          <input type="text" class="form-control" name="input" placeholder="Ingredient" [(ngModel)]="inputNewIngredientName">
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <button [disabled]="inputNewIngredientName == ''" type="submit" class="btn btn-primary btn-block" (click)="createIngredient()">
+          <i class="fas fa-plus"></i>
+          Ajouter
+        </button>
+      </div>
+    </div>
+  </form>
+  <!-- Table -->
   <table class="table table-hover">
   <thead>
     <tr>

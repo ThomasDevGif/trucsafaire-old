@@ -17,6 +17,7 @@ export class IngredientComponent implements OnInit {
   loading: boolean = false;
   loggedUser: User;
   ingredients: Ingredient[];
+  inputNewIngredientName: string = '';
 
   constructor(
     private restService: RestService,
@@ -49,6 +50,22 @@ export class IngredientComponent implements OnInit {
   }
 
   /**
+   * Createe ingredient in database
+   */
+  createIngredient() {
+    let self = this;
+    let newIngredient : Ingredient = {
+      id: null,
+      name: self.inputNewIngredientName
+    };
+    self.loading = true;
+    self.restService.createIngredient(newIngredient)
+    .then(function() {
+      return self.refreshIngredients();
+    });
+  }
+
+  /**
    * Delete an ingredient by its id
    */
   deleteIngredient(ingredient: Ingredient) {
@@ -56,7 +73,6 @@ export class IngredientComponent implements OnInit {
     self.loading = true;
     self.restService.deleteIngredient(ingredient)
     .then(function(res) {
-      console.log(res);
       return self.refreshIngredients();
     });
   }

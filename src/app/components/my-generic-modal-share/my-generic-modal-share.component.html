@@ -12,23 +12,26 @@
     <div class="modal-body">
       <div *ngIf="loading">Chargement...</div>
       <div *ngIf="!loading">
-        <ng-select [items]="users"
-        [dropdownPosition]="'auto'"
-        bindLabel="name"
-        bindValue="id"
-        placeholder="Trouver quelqu'un..."
-        notFoundText="Aucun utilisateur trouvé"
-        [(ngModel)]="selectedUsersId">
-      </ng-select>
-      <div class="my-row-between">
-        <div>{{sharedUsers.length}} partage(s).</div>
-        <div>
-          <button type="button" class="btn btn-success my-margin-top" [disabled]="!selectedUsersId" (click)="shareList()">
+
+        <div class="row">
+          <div class="col-sm-8">
+            <ng-select [items]="users"
+            [dropdownPosition]="'auto'"
+            bindLabel="name"
+            bindValue="id"
+            placeholder="Trouver quelqu'un..."
+            notFoundText="Aucun utilisateur trouvé"
+            [(ngModel)]="selectedUsersId">
+          </ng-select>
+        </div>
+        <div class="col-sm-4">
+          <button type="button" class="btn btn-success btn-block" [disabled]="!selectedUsersId" (click)="shareList()">
             <i class="fas fa-share-alt"></i>
             <span class="my-margin-left">Ajouter</span>
           </button>
         </div>
       </div>
+      <div class="my-margin-top">{{sharedUsers.length}} partage(s).</div>
       <ul class="list-group my-margin-top">
         <li *ngFor="let sharedUser of sharedUsers" class="list-group-item d-flex justify-content-between align-items-center">
           <div><i class="fas fa-user"></i><span class="my-margin-left">{{sharedUser.name}}</span></div>
