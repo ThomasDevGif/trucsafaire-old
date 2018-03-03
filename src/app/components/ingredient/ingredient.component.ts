@@ -18,6 +18,10 @@ export class IngredientComponent implements OnInit {
   loggedUser: User;
   ingredients: Ingredient[];
   inputNewIngredientName: string = '';
+  editedIngredient: Ingredient = {
+    id: null,
+    name: ''
+  };
 
   constructor(
     private restService: RestService,
@@ -61,6 +65,7 @@ export class IngredientComponent implements OnInit {
     self.loading = true;
     self.restService.createIngredient(newIngredient)
     .then(function() {
+      self.inputNewIngredientName = '';
       return self.refreshIngredients();
     });
   }
@@ -73,6 +78,22 @@ export class IngredientComponent implements OnInit {
     self.loading = true;
     self.restService.deleteIngredient(ingredient)
     .then(function(res) {
+      return self.refreshIngredients();
+    });
+  }
+
+  setEditedIngredient(ingredient: Ingredient) {
+    this.editedIngredient = ingredient;
+  }
+
+  /**
+   * Edit ingredient name
+   */
+  editIngredient() {
+    let self = this;
+    self.loading = true;
+    self.restService.updateIngredient(self.editedIngredient)
+    .then(function() {
       return self.refreshIngredients();
     });
   }
