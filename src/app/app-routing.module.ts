@@ -5,6 +5,7 @@ import { ListComponent } from  './components/list/list.component';
 import { LoginComponent } from  './components/login/login.component';
 import { ProfileComponent } from  './components/profile/profile.component';
 import { IngredientComponent } from  './components/ingredient/ingredient.component';
+import { RecipeComponent } from  './components/recipe/recipe.component';
 
 // Components
 
@@ -21,6 +22,9 @@ const routes: Routes = [
   }, {
     path: 'ingredient',
     component: IngredientComponent
+  }, {
+    path: 'recipe',
+    component: RecipeComponent
   }
 ];
 

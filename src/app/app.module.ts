@@ -27,6 +27,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MyGenericModalShareComponent } from './components/my-generic-modal-share/my-generic-modal-share.component';
 import { IngredientComponent } from './components/ingredient/ingredient.component';
+import { RecipeComponent } from './components/recipe/recipe.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { IngredientComponent } from './components/ingredient/ingredient.componen
     LoginComponent,
     ProfileComponent,
     MyGenericModalShareComponent,
-    IngredientComponent
+    IngredientComponent,
+    RecipeComponent
   ],
   imports: [
     NgbModule.forRoot(),
