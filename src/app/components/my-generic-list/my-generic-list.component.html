@@ -34,7 +34,7 @@
   <li class="list-group-item active">A faire ({{filterItems(false).length}})</li>
   <li class="list-group-item my-bg-grey">
     <div *ngIf="!loading" class="row">
-      <div [ngClass]="listGridOption" *ngFor="let item of filterItems(false); let i = index" dnd-draggable [dragEnabled]="true" [dragData]="item">
+      <div [ngClass]="listGridOption" *ngFor="let item of filterItems(false); let i = index">
         <my-generic-item [item]="item" (deleteItemFromParent)="deleteItemFromParent($event)"></my-generic-item>
       </div>
     </div>
@@ -45,7 +45,7 @@
   <li class="list-group-item active">Faits ({{filterItems(true).length}})</li>
   <li class="list-group-item my-bg-grey">
     <div *ngIf="!loading" class="row">
-      <div [ngClass]="listGridOption" *ngFor="let item of filterItems(true); let i = index" dnd-draggable [dragEnabled]="true" [dragData]="item">
+      <div [ngClass]="listGridOption" *ngFor="let item of filterItems(true); let i = index">
         <my-generic-item [item]="item" (deleteItemFromParent)="deleteItemFromParent($event)"></my-generic-item>
       </div>
     </div>

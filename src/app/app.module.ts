@@ -9,7 +9,6 @@ import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { DndModule } from 'ng2-dnd';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { StarRatingModule } from 'angular-star-rating';
 
 import { RestService } from './services/rest.service';
 import { AuthentificationService } from './services/authentification.service';
@@ -54,8 +53,7 @@ import { RecipeComponent } from './components/recipe/recipe.component';
     FormsModule,
     DndModule.forRoot(),
     ShowHidePasswordModule.forRoot(),
-    NgSelectModule,
-    StarRatingModule.forRoot()
+    NgSelectModule
   ],
   providers: [
     RestService,

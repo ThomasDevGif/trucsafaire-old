@@ -8,6 +8,8 @@
     }
 }
 
+body { padding-top: 60px; }
+
 .my-pointer { cursor: pointer; }
 
 .my-text {

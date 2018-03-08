@@ -2,7 +2,7 @@
 <div *ngIf="loggedUser" class="container my-container">
   <div class="my-row-between">
     <h2><i class="fas fa-user" aria-hidden="true"></i><span class="my-margin-left">{{loggedUser.name}}</span></h2>
-    <button type="button" class="btn" (click)="logout()">
+    <button type="btn btn-primary" class="btn" (click)="logout()">
       <i class="fas fa-power-off" aria-hidden="true"></i>
       Se déconnecter
     </button>
@@ -16,7 +16,7 @@
       </show-hide-password>
     </div>
     <div class="form-group">
-      <button [disabled]="!f.valid" class="btn btn-primary" (click)="updatePassword()">Valider</button>
+      <button [disabled]="!f.valid" class="btn btn-success" (click)="updatePassword()">Valider</button>
     </div>
   </form>
 </div>
