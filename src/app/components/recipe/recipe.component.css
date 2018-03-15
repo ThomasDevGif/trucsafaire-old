@@ -1,0 +1,17 @@
+.my-small-title {
+  font-size: 15px;
+}
+
+.my-hover-underline :hover {
+  text-decoration: underline;
+}
+
+.my-text-footer {
+  color: grey;
+  font-style: italic;
+}
+
+@media screen and (min-width: 500px) {
+  .my-options { position: relative; }
+  .my-fixed { position: fixed; }
+}

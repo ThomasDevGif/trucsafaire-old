@@ -2,7 +2,7 @@
 <div *ngIf="loggedUser" class="container my-container">
   <div class="my-row-between">
     <h2><i class="fas fa-user" aria-hidden="true"></i><span class="my-margin-left">{{loggedUser.name}}</span></h2>
-    <button type="btn btn-primary" class="btn" (click)="logout()">
+    <button class="btn btn-primary" (click)="logout()">
       <i class="fas fa-power-off" aria-hidden="true"></i>
       Se déconnecter
     </button>

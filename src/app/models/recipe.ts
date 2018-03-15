@@ -4,5 +4,6 @@ export class Recipe {
   description: string;
   difficulty: number;
   date: string;
+  time: number;
   userId: number;
 }

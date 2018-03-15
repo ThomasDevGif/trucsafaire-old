@@ -1,38 +1,65 @@
 <div class="container my-container">
   <div class="row">
-    <div class="col-4">
-      <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
-        <div class="card-body">
-          Ajouter
-        </div>
+    <div class="col-sm-4 my-options">
+      <!-- Mobile menu -->
+      <div class="d-block d-md-none my-margin-bottom my-row">
+        <button class="btn btn-primary">
+          <i class="fas fa-book"></i> <span class="my-margin-left">Ajouter une recette</span>
+        </button>
+        <button class="btn btn-info">
+          <i class="fas fa-caret-down"></i> <span class="my-margin-left">Options</span>
+        </button>
       </div>
-      <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-        <div class="card-header">Menu</div>
-        <div class="card-body">
-          <h4 class="card-title">Primary card title</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" value="" checked="">
-              Option one
-            </label>
-          </div>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" value="" checked="">
-              Option second
-            </label>
+      
+      <div class="my-fixed col-sm-3">
+        <!-- Menu -->
+        <div class="d-none d-md-block">
+          <button type="button" class="btn btn-primary btn-lg btn-block my-margin-bottom">
+            <i class="fas fa-book"></i> <span class="my-margin-left">Ajouter une recette</span>
+          </button>
+          <div class="card text-white bg-info mb-3">
+            <div class="card-header">Options</div>
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                    <label class="custom-control-label" for="customCheck2">Check this custom checkbox 2</label>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="col-8">
-      <div *ngFor="let recipe of recipes" class="card">
-        <div class="card-body">
-          <h4 class="card-title">{{recipe.name}}</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle {{recipe.userId}}</h6>
-          <p class="card-text">{{recipe.description}}</p>
+    <div class="col-sm-8 my-recipes-list">
+      <!-- Mobile card -->
+      <!-- TODO -->
+
+      <!-- Card -->
+      <div *ngFor="let recipe of recipes" class="card my-margin-bottom">
+        <h3 class="card-header my-row-between my-small-title">
+          <div class="my-pointer my-hover-underline">
+            <i class="fas fa-book my-info"></i>
+            <span class="my-margin-left my-primary">{{recipe.name}}</span>
+          </div>
+          <div class="grey">
+            {{recipe.time}}<span class="my-margin-left">min</span>
+          </div>
+        </h3>
+        <div class="my-lg-padding">
+          <div class="my-row-between">
+            <div class="my-text-footer">Par {{getRecipeUser(recipe.userId)}}, le {{recipe.date}}</div>
+            <div class="my-pointer my-hover-underline">
+              <i class="far fa-heart"></i><span class="my-margin-left">Favoris</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
