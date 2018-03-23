@@ -151,13 +151,21 @@ export class RecipeComponent implements OnInit {
     // }
   }
 
+  /**
+   * Get user name associate to recipe userId
+   * @param {number} userID
+   */
   getRecipeUser(userId : number) : string {
     let user: User[] = this.users.filter(user => user.id === userId);
     return user[0].name;
   }
 
-  onFavoritesChange($event) {
-    console.log('nothing :p');
+  /**
+   * Change url
+   * @param {string} link
+   */
+  goTo(link: string) {
+    this.router.navigate(['/recipe/create'])
   }
 
 }

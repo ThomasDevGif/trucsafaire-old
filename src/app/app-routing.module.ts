@@ -6,6 +6,7 @@ import { LoginComponent } from  './components/login/login.component';
 import { ProfileComponent } from  './components/profile/profile.component';
 import { IngredientComponent } from  './components/ingredient/ingredient.component';
 import { RecipeComponent } from  './components/recipe/recipe.component';
+import { MyRecipeCreateComponent } from  './components/recipe/my-recipe-create/my-recipe-create.component';
 
 // Components
 
@@ -25,6 +26,9 @@ const routes: Routes = [
   }, {
     path: 'recipe',
     component: RecipeComponent
+  }, {
+    path: 'recipe/create',
+    component: MyRecipeCreateComponent
   }
 ];
 

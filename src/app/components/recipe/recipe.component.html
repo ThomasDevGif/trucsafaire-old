@@ -14,7 +14,7 @@
     <div class="col-sm-4">
       <!-- Mobile menu -->
       <div class="d-block d-md-none my-margin-bottom my-row">
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" (click)="goTo('/recipe/create')">
           <i class="fas fa-book"></i> <span class="my-margin-left">Ajouter une recette</span>
         </button>
         <button class="btn btn-info">
@@ -24,7 +24,7 @@
 
       <!-- Menu -->
       <div class="d-none d-md-block">
-        <button type="button" class="btn btn-primary btn-lg btn-block my-margin-bottom">
+        <button type="button" class="btn btn-primary btn-lg btn-block my-margin-bottom" (click)="goTo('/recipe/create')">
           <i class="fas fa-book"></i> <span class="my-margin-left">Ajouter une recette</span>
         </button>
         <div class="card text-white bg-info mb-3">
