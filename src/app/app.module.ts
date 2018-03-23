@@ -10,6 +10,7 @@ import { DndModule } from 'ng2-dnd';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BootstrapSwitchModule } from 'angular2-bootstrap-switch';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { RestService } from './services/rest.service';
 import { AuthentificationService } from './services/authentification.service';
@@ -55,7 +56,8 @@ import { RecipeComponent } from './components/recipe/recipe.component';
     DndModule.forRoot(),
     ShowHidePasswordModule.forRoot(),
     NgSelectModule,
-    BootstrapSwitchModule.forRoot()
+    BootstrapSwitchModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [
     RestService,

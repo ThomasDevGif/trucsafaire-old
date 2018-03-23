@@ -15,7 +15,8 @@
   color: #F44336;
 }
 
-@media screen and (min-width: 500px) {
-  .my-options { position: relative; }
-  .my-fixed { position: fixed; }
+.my-recipe-list {
+  /* height: 100vh; */
+  height: calc(100vh - 135px);
+  overflow-y: auto;
 }

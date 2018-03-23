@@ -4,6 +4,7 @@ import { User } from '../../models/user';
 import { Recipe } from '../../models/recipe';
 import { RestService } from '../../services/rest.service';
 import { AuthentificationService } from '../../services/authentification.service';
+import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
   selector: 'app-recipe',
@@ -128,6 +129,12 @@ export class RecipeComponent implements OnInit {
   switchOff: string = "Non";
   switchOnColor: string = "green";
   switchOffColor: string = "red";
+
+  public config: PaginationInstance = {
+    id: 'custom',
+    itemsPerPage: 3,
+    currentPage: 1
+  };
 
   constructor(
     private restService: RestService,
