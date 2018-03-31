@@ -1,3 +1,4 @@
+<my-generic-loader *ngIf="loading"></my-generic-loader>
 <div class="container my-container">
   <form>
     <fieldset>
@@ -48,12 +49,27 @@
           <input type="number" class="form-control" id="inputRecipeTime" placeholder="Temps (min)" [(ngModel)]="recipe.time" [ngModelOptions]="{standalone: true}">
         </div>
       </div>
+      <div class="form-group row">
+        <label for="inputRecipeTime" class="col-sm-2 col-form-label">Temps (min)</label>
+        <div class="col-sm-10">
+          <ng-select [items]="ingredients"
+          [dropdownPosition]="'auto'"
+          bindLabel="name"
+          bindValue="id"
+          placeholder="Ajouter un ingrédient..."
+          notFoundText="Aucun ingrédient trouvé"
+          [(ngModel)]="selectedIngredientsId"
+          [ngModelOptions]="{standalone: true}">
+          </ng-select>
+          <p>{{selectedIngredientsId}}</p>
+        </div>
+      </div>
     </fieldset>
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-10">
-        <button type="submit" class="btn btn-success" (click)="addRecipe()">Ajouter</button>
-        <button class="btn btn-outline-dark">Retour</button>
+        <button [disabled]="isInvalidForm()" type="submit" class="btn btn-success" (click)="addRecipe()">Ajouter</button>
+        <button class="btn btn-dark" (click)="goTo('/recipe')">Retour</button>
       </div>
     </div>
   </form>

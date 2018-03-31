@@ -90,7 +90,7 @@
       </div>
     </div>
 
-    <div class="col-sm-8 my-recipe-list">
+    <div *ngIf="recipes" class="col-sm-8 my-recipe-list">
       <ul class="list-group">
         <li class="card card-hover my-margin-bottom" *ngFor="let recipe of recipes | paginate: config">
           <div class="card-body">

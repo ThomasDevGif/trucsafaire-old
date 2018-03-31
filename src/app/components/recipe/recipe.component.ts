@@ -16,7 +16,11 @@ export class RecipeComponent implements OnInit {
   // Variables
   loggedUser: User;
   loading: boolean = false;
-  users: User[] = [
+
+  users: User[];
+  recipes: Recipe[];
+
+  userss: User[] = [
     {
       id: 1,
       name: 'Thomas',
@@ -27,8 +31,7 @@ export class RecipeComponent implements OnInit {
       password: ''
     }
   ]
-
-  recipes: Recipe[] = [
+  recipess: Recipe[] = [
     {
       id: 1,
       name: 'Recette de ouf qui me fatigue beaucoup',
@@ -143,12 +146,38 @@ export class RecipeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.loggedUser = this.authentificationService.getUser();
-    // if (undefined == this.loggedUser) {
-    //   this.router.navigate(['/login'])
-    // } else {
-    //   // init ...
-    // }
+    this.loggedUser = this.authentificationService.getUser();
+    if (undefined == this.loggedUser) {
+      this.router.navigate(['/login'])
+    } else {
+      this.initialize();
+    }
+  }
+
+  /**
+   * Initialize data from webserver
+   */
+  initialize() {
+    let self = this;
+    self.loading = true;
+    self.restService.getUsers()
+    .then(function(resUsers) {
+      self.users = resUsers;
+      self.initializeRecipes();
+    });
+  }
+
+  /**
+   * Get recipes from webserver
+   */
+  initializeRecipes() {
+    let self = this;
+    self.loading = true;
+    self.restService.getRecipes()
+    .then(function(resRecipes) {
+      self.recipes = resRecipes;
+      self.loading = false;
+    });
   }
 
   /**
@@ -165,7 +194,7 @@ export class RecipeComponent implements OnInit {
    * @param {string} link
    */
   goTo(link: string) {
-    this.router.navigate(['/recipe/create'])
+    this.router.navigate([link])
   }
 
 }
